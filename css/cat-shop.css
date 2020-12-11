@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.catalog {
+    max-width: 930px;
+    margin: 20px auto;
+    /* width: 100vw; */
+    /* padding: 10px; */
+    /* box-sizing: border-box; */
+    display: grid;
+    /* grid-template-columns: repeat(3, minmax(auto, 33%));
+    gap: 0.5%; */
+    grid-template-columns: repeat(3, 300px);
+    grid-auto-rows: calc(300px + 100px);
+    gap: 15px;
+}
+.picture {
+    position: relative;
+    height: 300px;
+}
+
+@media (max-width: 930px) {
+    .catalog {
+        grid-template-columns: repeat(3, 33vw);
+        grid-auto-rows: minmax(auto, calc(33vw + 100px));
+        gap: 0.5vw;
+    }
+    .picture {
+        height: 33vw;
+    }
+}
+.goods__id {
+    display: none;
+}
+.picture__owner {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 3%;
+    padding: 2%;
+    background-color: rgba(255, 255, 240, 0.5);
+    border-radius: 0.4em 0 0 0.4em;
+    color: black;
+    font-size: 12px;
+}
+
+.picture__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+/* <div class="picture">
+    <img class="picture__img" src="...">
+    <img class="picture__img" src="...">
+</div> */
+
+.picture__img:not(:first-child) {
+    display: none;
+}
+.picture:hover .picture__img:nth-child(2) {
+    display: initial;
+}
+.picture:hover .picture__img:not(:nth-child(2)) {
+    display: none;
+}
+
+/* .nav-part__filter {
+    padding: 10px;
+} */
+.nav-part__letter {
+    background-color: #faf0e7;
+    font-weight: bold;
+    padding: 4px 0;
+}
+.nav-part__list {
+    display: none;
+    background-color: #fdf7ee;
+    font-weight: normal;
+    /* padding: 0 10px ; */
+}
+.nav__nav-part {
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.nav-part__checkbox, .nav-part__label {
+    cursor: pointer;
+}
+.nav-part__label--all-item,
+.nav-part__item--all {
+    cursor: default; 
+}
+.nav-part__label--all-item{
+    padding: 0 10px;
+    font-size: 1em;
+    color: grey;
+}
+
+.nav-part__label {
+    display: inline-block;
+}
+.nav-part__link {
+    text-decoration: none;
+    color: black;
+    padding: 0 10px;
+}
+.nav-part__letter:hover > .nav-part__link {
+    color: red;
+}
+.nav-part__item:hover {
+    border: 0.1px solid #bf8b55;
+}
+/* .nav-part__letter, */
+.nav-part__item,
+.nav-part__item--all:hover {
+    border: 0.1px solid transparent;
+}
+/* .nav-part__letter:hover,
+.nav-part__item:hover {
+    border: 0.1px solid #bf8b55;
+} */

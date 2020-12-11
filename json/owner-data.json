@@ -1,0 +1,73 @@
+{
+    "owners": [{
+        "id": "01",
+        "name": "Brett Jordan",
+        "unsplash-link": "https://unsplash.com/@brett_jordan",
+        "country": "Великобритания",
+        "area": "Лондон",
+        "website": "x1brettstuff.blogspot.com"
+    },{
+        "id": "02",
+        "name": "Caleb Woods",
+        "unsplash-link": "https://unsplash.com/@caleb_woods",
+        "country": "США",
+        "area": "Область залива Сан-Франциско",
+        "website": ""
+    }, {
+        "id": "03",
+        "name": "Chris J. Davis",
+        "unsplash-link": "https://unsplash.com/@chrisjdavis",
+        "country": "США",
+        "area": "Сан-Диего",
+        "website": "chrisjdavis.darkroom.tech"
+    }, {
+        "id": "04",
+        "name": "Jan Haerer",
+        "unsplash-link": "https://unsplash.com/@topazspirit",
+        "country": "США",
+        "area": "Ок-Ридж",
+        "website": "topazspirits.com"
+    },{
+        "id": "05",
+        "name": "oao Alexandre Paulo",
+        "unsplash-link": "https://unsplash.com/@alexandrecpaulo",
+        "country": "Португалия",
+        "area": "Лиссабон",
+        "website": ""
+    },{
+        "id": "06",
+        "name": "Kabo",
+        "unsplash-link": "https://unsplash.com/@kabofoods",
+        "country": "Канада",
+        "area": "Торонто",
+        "website": "kabo.co"
+    },{
+        "id": "07",
+        "name": "Kari Shea",
+        "unsplash-link": "https://unsplash.com/@karishea",
+        "country": "США",
+        "area": "Гранд-Рапидс, Мичиган",
+        "website": "karisheacreative.com"
+    },{
+        "id": "08",
+        "name": "Larissa Dupont",
+        "unsplash-link": "https://unsplash.com/@lalieken_99",
+        "country": "Бельгия",
+        "area": "Зоттегем",
+        "website": ""
+    },{
+        "id": "09",
+        "name": "Rusty Watson",
+        "unsplash-link": "https://unsplash.com/@rustyct1",
+        "country": "США",
+        "area": "Коннектикут",
+        "website": ""
+    },{
+        "id": "10",
+        "name": "Millie Wollney",
+        "unsplash-link": "https://unsplash.com/@theluckyneko",
+        "country": "США",
+        "area": "Нью-Джерси - Нью-Йорк",
+        "website": "www.FOWArescue.com"
+    }]
+}

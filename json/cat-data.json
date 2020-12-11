@@ -1,0 +1,250 @@
+{
+    "cats": [
+        {   "id": "01C1",
+            "name": "Мэрит",
+            "breed": "norwood",
+            "sex": "Кошка",
+            "age": "8 лет",
+            "color": "окрас: голубой дымчатый",
+            "price": "4000",
+            "owner": "01",
+            "photo": [{
+                    "large": ["img/products/01C1_01.jpg", "img/products/01C1_02.jpg", "img/products/01C1_03.jpg", "img/products/01C1_04.jpg", "img/products/01C1_05.jpg", "img/products/01C1_06.jpg"]
+                },
+                {
+                    "small": ["img/products/01C1_01-S.jpg", "img/products/01C1_02-S.jpg", "img/products/01C1_03-S.jpg", "img/products/01C1_04-S.jpg", "img/products/01C1_05-S.jpg", "img/products/01C1_06-S.jpg"]
+                }
+            ]
+        },{ "id": "01C2",
+            "name": "Харрис",
+            "breed": "amwiryh",
+            "sex": "Кот",
+            "age": "5 лет",
+            "color": "окрас: серый биколор",
+            "price": "6000",
+            "owner": "01",
+            "photo": [{
+                    "large": ["img/products/01C2_01.jpg", "img/products/01C2_02.jpg", "img/products/01C2_03.jpg", "img/products/01C2_04.jpg"]
+                },
+                {
+                    "small": ["img/products/01C2_01-S.jpg", "img/products/01C2_02-S.jpg", "img/products/01C2_03.jpg-S", "img/products/01C2_04-S.jpg"]
+                }
+            ]
+        },
+        {
+            "id": "02C1",
+            "name": "Пандора",
+            "breed": "bengal",
+            "sex": "Кошка",
+            "age": "2 года",
+            "color": "окрас: золотой мрамор",
+            "price": "13000",
+            "owner": "02",
+            "photo": [{
+                    "large": ["https://i.postimg.cc/Ssh9dWzt/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg", "https://i.postimg.cc/vBtVNcr8/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg"]
+                },
+                {
+                    "small": ["https://i.postimg.cc/nrMhGzTP/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg", "https://i.postimg.cc/qR17KncK/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg"]
+                }
+            ]
+        }, {
+            "id": "03C1",
+            "name": "Жульен",
+            "breed": "eushorth",
+            "sex": "Кот",
+            "age": "10 лет",
+            "color": "окрас: рыжий тикированный",
+            "price": "6000",
+            "owner": "03",
+            "photo": [{
+                    "large": ["https://i.postimg.cc/xdxCJM3z/chris-j-davis-0kintgf-GGPw-unsplash.jpg", "https://i.postimg.cc/6Q5qpYnK/chris-j-davis-kblsq4-K5ut-Q-unsplash.jpg", "https://i.postimg.cc/0QzNpjVH/chris-j-davis-Lsd8-L4vy-Few-unsplash.jpg"]
+                },
+                {
+                    "small": ["https://i.postimg.cc/y86smWdX/chris-j-davis-0kintgf-GGPw-unsplash-s.jpg", "https://i.postimg.cc/RZP9X9Jr/chris-j-davis-kblsq4-K5ut-Q-unsplash-s.jpg", "https://i.postimg.cc/nLCxW5qX/chris-j-davis-Lsd8-L4vy-Few-unsplash-s.jpg"]
+                }
+            ]
+        }, {
+            "id": "04C1",
+            "name": "Бриджит",
+            "breed": "calshine",
+            "sex": "Кошка",
+            "age": "10 лет",
+            "color": "окрас: серый мрамор",
+            "price": "16000",
+            "owner": "04",
+            "photo": [{
+                    "large": ["https://i.postimg.cc/XqgtqcwM/jan-haerer-5-M8q-RDJd6-Lo-E-unsplash.jpg", "https://i.postimg.cc/nrx6nw9Y/jan-haerer-6-JCZ5-Um8e-Q8-unsplash.jpg", "https://i.postimg.cc/Y2N5dkTX/jan-haerer-VBFu-OXd-Fw44-unsplash.jpg", "https://i.postimg.cc/028L3Fs9/jan-haerer-zc-PMA-Qs8-ZY-unsplash.jpg"]
+                },
+                {
+                    "small": ["https://i.postimg.cc/LsTPyJB9/jan-haerer-5-M8q-RDJd6-Lo-E-unsplash-s.jpg", "https://i.postimg.cc/pTLF3PqD/jan-haerer-6-JCZ5-Um8e-Q8-unsplash-s.jpg", "https://i.postimg.cc/YSkgf6FD/jan-haerer-VBFu-OXd-Fw44-unsplash-s.jpg", "https://i.postimg.cc/63bvXFmF/jan-haerer-zc-PMA-Qs8-ZY-unsplash-s.jpg"]
+                }
+            ]
+        }
+        ,{ "id": "05C1",
+            "name": "Джонни",
+            "breed": "lykoi",
+            "sex": "Кот",
+            "age": "7 лет",
+            "color": "окрас: черный солид",
+            "price": "15000",
+            "owner": "05",
+            "photo": [{
+                    "large": ["img/products/05C1_01.jpg", "img/products/05C1_03.jpg", "img/products/05C1_02.jpg"]
+                },
+                {
+                    "small": ["img/products/05C1_01-S.jpg", "img/products/05C1_03-S.jpg", "img/products/05C1_02.jpg-S"]
+                }
+            ]
+        },{ "id": "06C1",
+            "name": "Роджер",
+            "breed": "ragamuf",
+            "sex": "Кот",
+            "age": "6 лет",
+            "color": "окрас: рыжий биколор",
+            "price": "17000",
+            "owner": "06",
+            "photo": [{
+                    "large": ["img/products/06C1_01.jpg", "img/products/06C1_02.jpg", "img/products/06C1_03.jpg"]
+                },
+                {
+                    "small": ["img/products/06C1_01-S.jpg", "img/products/06C1_02-S.jpg", "img/products/06C1_03.jpg-S"]
+                }
+            ]
+        },{ "id": "06C2",
+            "name": "Оскар",
+            "breed": "eushorth",
+            "sex": "Кот",
+            "age": "7 лет",
+            "color": "окрас: рыжий тикированный",
+            "price": "14000",
+            "owner": "06",
+            "photo": [{
+                    "large": ["img/products/06C2_01.jpg", "img/products/06C2_02.jpg", "img/products/06C2_03.jpg"]
+                },
+                {
+                    "small": ["img/products/06C2_01-S.jpg", "img/products/06C2_02-S.jpg", "img/products/06C2_03.jpg-S"]
+                }
+            ]
+        },{ "id": "07C1",
+            "name": "Аника",
+            "breed": "amshorth",
+            "sex": "Кошка",
+            "age": "4 года",
+            "color": "окрас: серый тикированный",
+            "price": "7000",
+            "owner": "07",
+            "photo": [{
+                    "large": ["img/products/07C1_01.jpg", "img/products/07C1_02.jpg"]
+                },
+                {
+                    "small": ["img/products/07C1_01-S.jpg", "img/products/07C1_02-S.jpg"]
+                }
+            ]
+        },{ "id": "08C1",
+            "name": "Эбби",
+            "breed": "brshorth",
+            "sex": "Кошка",
+            "age": "7 лет",
+            "color": "окрас: голубой солид",
+            "price": "10000",
+            "owner": "08",
+            "photo": [{
+                    "large": ["img/products/08C1_01.jpg", "img/products/08C1_02.jpg", "img/products/08C1_03.jpg", "img/products/08C1_04.jpg"]
+                },
+                {
+                    "small": ["img/products/08C1_01-S.jpg", "img/products/08C1_02-S.jpg", "img/products/08C1_03.jpg-S", "img/products/08C1_04.jpg-S"]
+                }
+            ]
+        },{ "id": "08C2",
+            "name": "Фродо",
+            "breed": "ragdoll",
+            "sex": "Кот",
+            "age": "9 лет",
+            "color": "окрас: кремовый ван",
+            "price": "12000",
+            "owner": "08",
+            "photo": [{
+                    "large": ["img/products/08C2_01.jpg", "img/products/08C2_02.jpg", "img/products/08C2_03.jpg"]
+                },
+                {
+                    "small": ["img/products/08C2_01-S.jpg", "img/products/08C2_02-S.jpg", "img/products/08C2_03.jpg-S"]
+                }
+            ]
+        },{ "id": "09C1",
+            "name": "Винсент",
+            "breed": "angora",
+            "sex": "Кот",
+            "age": "5 лет",
+            "color": "окрас: голубоглазый альбинос",
+            "price": "9000",
+            "owner": "09",
+            "photo": [{
+                    "large": ["img/products/09C1_01.jpg", "img/products/09C1_02.jpg", "img/products/09C1_03.jpg", "img/products/09C1_04.jpg"]
+                },
+                {
+                    "small": ["img/products/09C1_01-S.jpg", "img/products/09C1_02-S.jpg", "img/products/09C1_03.jpg-S", "img/products/09C1_04.jpg-S"]
+                }
+            ]
+        },{ "id": "10C1",
+            "name": "Норман",
+            "breed": "eushorth",
+            "sex": "Кот",
+            "age": "1 год",
+            "color": "окрас: серый черепаховый биколор",
+            "price": "14000",
+            "owner": "10",
+            "photo": [{
+                    "large": ["img/products/10C1_01.jpg", "img/products/10C1_02.jpg", "img/products/10C1_03.jpg"]
+                },
+                {
+                    "small": ["img/products/10C1_01-S.jpg", "img/products/10C1_02-S.jpg", "img/products/10C1_03.jpg-S"]
+                }
+            ]
+        },{ "id": "10C2",
+            "name": "Мебиус",
+            "breed": "mandalay",
+            "sex": "Кот",
+            "age": "6 мес.",
+            "color": "окрас: черный солид",
+            "price": "14500",
+            "owner": "10",
+            "photo": [{
+                    "large": ["img/products/10C2_01.jpg", "img/products/10C2_02.jpg", "img/products/10C2_03.jpg"]
+                },
+                {
+                    "small": ["img/products/10C2_01-S.jpg", "img/products/10C2_02-S.jpg", "img/products/10C2_03.jpg-S"]
+                }
+            ]
+        },{ "id": "10C3",
+            "name": "Афина",
+            "breed": "bengal",
+            "sex": "Кошка",
+            "age": "1 год",
+            "color": "окрас: шоколадный мрамор",
+            "price": "8000",
+            "owner": "10",
+            "photo": [{
+                    "large": ["img/products/10C3_01.jpg", "img/products/10C3_02.jpg"]
+                },
+                {
+                    "small": ["img/products/10C3_01-S.jpg", "img/products/10C3_02-S.jpg"]
+                }
+            ]
+        },{ "id": "10C4",
+            "name": "Пако",
+            "breed": "manx",
+            "sex": "Кот",
+            "age": "6 мес.",
+            "color": "окрас: черный арлекин",
+            "price": "6000",
+            "owner": "10",
+            "photo": [{
+                    "large": ["img/products/10C4_01.jpg", "img/products/10C4_02.jpg", "img/products/10C4_03.jpg"]
+                },
+                {
+                    "small": ["img/products/10C4_01-S.jpg", "img/products/10C4_02-S.jpg", "img/products/10C4_03.jpg-S"]
+                }
+            ]
+        }
+    ]
+}

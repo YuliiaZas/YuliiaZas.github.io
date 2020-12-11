@@ -1,0 +1,79 @@
+[{"cat":[ 
+    {  "id":"2-1",
+        "name":"Пандора",
+        "breed":"bengal",
+        "sex":"Кошка",
+        "age":"2 года",
+        "color": "окрас: золотой мрамор",
+        "price":"13000",
+        "owner":"2",
+        "photo":[
+            {"large":["https://i.postimg.cc/Ssh9dWzt/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg","https://i.postimg.cc/vBtVNcr8/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg"]},
+            {"small":["https://i.postimg.cc/nrMhGzTP/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg","https://i.postimg.cc/qR17KncK/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg"]}]
+    },{ "id":"3-1",
+        "name":"Жульен",
+        "breed":"eushorth",
+        "sex":"Кот",
+        "age":"10 лет",
+        "color": "окрас: рыжий слабый мрамор",
+        "price":"6000",
+        "owner":"3",
+        "photo":[
+            {"large":["https://i.postimg.cc/mc9RKcqL/chris-j-davis-0kintgf-GGPw-unsplash.jpg","https://i.postimg.cc/HrRdS06v/chris-j-davis-kblsq4-K5ut-Q-unsplash.jpg","https://i.postimg.cc/1nZPSmhp/chris-j-davis-Lsd8-L4vy-Few-unsplash.jpg"]},
+            {"small":["https://i.postimg.cc/vcKJMY5c/chris-j-davis-0kintgf-GGPw-unsplash-s.jpg","https://i.postimg.cc/68GDpkhz/chris-j-davis-kblsq4-K5ut-Q-unsplash-s.jpg","https://i.postimg.cc/hJWNz2yn/chris-j-davis-Lsd8-L4vy-Few-unsplash-s.jpg"]}]
+    },{ "id":"4-1",
+        "name":"Бриджит",
+        "breed":"calshine",
+        "sex":"Кошка",
+        "age":"10 лет",
+        "color": "окрас: серый мрамор",
+        "price":"16000",
+        "owner":"4",
+        "photo":[
+            {"large":["https://i.postimg.cc/V0dKHtG4/jan-haerer-5-M8q-RDJd6-Lo-E-unsplash.jpg","https://i.postimg.cc/Vr77RgRd/jan-haerer-6-JCZ5-Um8e-Q8-unsplash.jpg","https://i.postimg.cc/F1RCRtrc/jan-haerer-VBFu-OXd-Fw44-unsplash.jpg","https://i.postimg.cc/jCFgn821/jan-haerer-zc-PMA-Qs8-ZY-unsplash.jpg"]},
+            {"small":["https://i.postimg.cc/xkXq8T4h/jan-haerer-5-M8q-RDJd6-Lo-E-unsplash-s.jpg","https://i.postimg.cc/KKCjMhXz/jan-haerer-6-JCZ5-Um8e-Q8-unsplash-s.jpg","https://i.postimg.cc/68jyBGYC/jan-haerer-VBFu-OXd-Fw44-unsplash-s.jpg","https://i.postimg.cc/47tdv2Z1/jan-haerer-zc-PMA-Qs8-ZY-unsplash-s.jpg"]}]
+    }
+]}, {"owner":[
+    { "id": "2",
+        "name": "Caleb Woods",
+        "unsplash-link": "https://unsplash.com/@caleb_woods?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText",
+        "country": "США",
+        "area": "Область залива Сан-Франциско",
+        "website": ""
+    }, {"id": "3",
+        "name": "Chris J. Davis",
+        "unsplash-link": "https://unsplash.com/@chrisjdavis?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText",
+        "country": "США",
+        "area": "Сан-Диего",
+        "website": "chrisjdavis.darkroom.tech"
+    }, {"id": "4",
+        "name": "Jan Haerer",
+        "unsplash-link": "https://unsplash.com/@topazspirit?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText",
+        "country": "США",
+        "area": "Ок-Ридж",
+        "website": "topazspirits.com"
+    }
+]}, {"breed":[
+    {   "id":"bengal", 
+        "name":"Бенгальская кошка (бенгал)",
+        "description":"Потомка дикой азиатской леопардовой и домашней кошек не зря называют мини-леопардом. Деловой характер и любознательность  питомца не дадут вам заскучать.",
+        "hair":"короткошерстная",
+        "upkeep":"1",
+        "origin ":"США",
+        "price-range":"2"
+    },{ "id":"eushorth", 
+        "name":"Европейская короткошерстная кошка",
+        "description":"Второе название породы – кельтская кошка. Прекрасно адаптируются к новым условиям, имеют уравновешенный характер и крепкое здоровье. Коты любят детей, поэтому прекрасно подойдут для семьи с шумными малышами.",
+        "hair":"короткошерстная",
+        "upkeep":"1",
+        "origin ":"страны Европы",
+        "price-range":"2"
+    },{ "id":"calshine", 
+        "name":"Калифорнийская сияющая кошка",
+        "description":"Многочисленные скрещивания наделили этого маленького хищника шерстью, красиво переливающейся на солнце. Охотничий инстинкт можно полностью реализовать, заведя сияющую кошку в загородном доме.",
+        "hair":"короткошерстная",
+        "upkeep":"2",
+        "origin ":"США",
+        "price-range":"3"
+    }
+]}]
