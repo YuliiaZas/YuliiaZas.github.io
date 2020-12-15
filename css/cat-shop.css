@@ -68,57 +68,57 @@
     display: none;
 }
 
-/* .nav-part__filter {
+/* .aside-part__filter {
     padding: 10px;
 } */
-.nav-part__letter {
+.aside-part__letter {
     background-color: #faf0e7;
     font-weight: bold;
     padding: 4px 0;
 }
-.nav-part__list {
+.aside-part__list {
     display: none;
     background-color: #fdf7ee;
     font-weight: normal;
     /* padding: 0 10px ; */
 }
-.nav__nav-part {
+.aside__aside-part {
     font-size: 1.2em;
     cursor: pointer;
 }
-.nav-part__checkbox, .nav-part__label {
+.aside-part__checkbox, .aside-part__label {
     cursor: pointer;
 }
-.nav-part__label--all-item,
-.nav-part__item--all {
+.aside-part__label--all-item,
+.aside-part__item--all {
     cursor: default; 
 }
-.nav-part__label--all-item{
+.aside-part__label--all-item{
     padding: 0 10px;
     font-size: 1em;
     color: grey;
 }
 
-.nav-part__label {
+.aside-part__label {
     display: inline-block;
 }
-.nav-part__link {
+.aside-part__link {
     text-decoration: none;
     color: black;
     padding: 0 10px;
 }
-.nav-part__letter:hover > .nav-part__link {
+.aside-part__letter:hover > .aside-part__link {
     color: red;
 }
-.nav-part__item:hover {
+.aside-part__item:hover {
     border: 0.1px solid #bf8b55;
 }
-/* .nav-part__letter, */
-.nav-part__item,
-.nav-part__item--all:hover {
+/* .aside-part__letter, */
+.aside-part__item,
+.aside-part__item--all:hover {
     border: 0.1px solid transparent;
 }
-/* .nav-part__letter:hover,
-.nav-part__item:hover {
+/* .aside-part__letter:hover,
+.aside-part__item:hover {
     border: 0.1px solid #bf8b55;
 } */

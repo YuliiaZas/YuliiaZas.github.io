@@ -196,23 +196,23 @@ class BreedFilter {
 
             $(filterData[letterDataIndex].ids).each((index, breedId) => {
                 let breedName = filterData[letterDataIndex].names[index];
-                let filterItemTemplate = ` <li class="nav-part__item">
-                    <a href="#" class="nav-part__link">
-                        <input type="checkbox" class="nav-part__checkbox" id="nav-part-${breedId}">
-                        <label class="nav-part__label" for="nav-part-${breedId}">${breedName}</label>
+                let filterItemTemplate = ` <li class="aside-part__item">
+                    <a href="#" class="aside-part__link">
+                        <input type="checkbox" class="aside-part__checkbox" id="aside-part-${breedId}">
+                        <label class="aside-part__label" for="aside-part-${breedId}">${breedName}</label>
                     </a>
                 </li>`;
                 filterListTemplate += filterItemTemplate;
 
-                let allFilterItemTemplate = `<li class="nav-part__item  nav-part__item--all">
-                    <span class="nav-part__label nav-part__label--all nav-part__label--all-item" >${breedName}</span>
+                let allFilterItemTemplate = `<li class="aside-part__item  aside-part__item--all">
+                    <span class="aside-part__label aside-part__label--all aside-part__label--all-item" >${breedName}</span>
                 </li>`;
-                this.filterBlock.find(".nav-part__list--all").append(allFilterItemTemplate);
+                this.filterBlock.find(".aside-part__list--all").append(allFilterItemTemplate);
             });
 
-            let filterLetterTemplate = `<li class="nav-part__letter" data-letter="${letter}">
-                <a href="#" class="nav-part__link">${letter}</a>
-                <ul class="nav-part__list">
+            let filterLetterTemplate = `<li class="aside-part__letter" data-letter="${letter}">
+                <a href="#" class="aside-part__link">${letter}</a>
+                <ul class="aside-part__list">
                     ${filterListTemplate}
                 </ul>
             </li>`;
@@ -222,43 +222,43 @@ class BreedFilter {
 
     toggleFilterLetters (e) {
         if ($(e.target).prop("tagName") === "A" ||
-            $(e.target).hasClass("nav-part__label--all")) {
+            $(e.target).hasClass("aside-part__label--all")) {
             e.preventDefault();
         }
         let isToggleAllowed = true;
-        if (e.target.closest(".nav-part__item") !== null ||
-            $(e.target).hasClass("nav-part__checkbox--all")) {
+        if (e.target.closest(".aside-part__item") !== null ||
+            $(e.target).hasClass("aside-part__checkbox--all")) {
             isToggleAllowed = false;
         }
         if (isToggleAllowed) {
-            $(e.currentTarget).find(".nav-part__list").slideToggle(100);
+            $(e.currentTarget).find(".aside-part__list").slideToggle(100);
         }
     }
 
     checkBreeds(e) {
         let isBreedSelected = false;
-        this.filterBlock.find(".nav-part__item:not(.nav-part__item--all)").each((i, item) => {
-            if ($(item).find(".nav-part__checkbox").prop("checked")) {
+        this.filterBlock.find(".aside-part__item:not(.aside-part__item--all)").each((i, item) => {
+            if ($(item).find(".aside-part__checkbox").prop("checked")) {
                 isBreedSelected = true;
             }
         });
         if (isBreedSelected) {
-            this.filterBlock.find(".nav-part__checkbox--all").prop("checked", false);
+            this.filterBlock.find(".aside-part__checkbox--all").prop("checked", false);
         } else {
-            this.filterBlock.find(".nav-part__checkbox--all").prop("checked", true);
+            this.filterBlock.find(".aside-part__checkbox--all").prop("checked", true);
         }
 
-        if (e && $((e.currentTarget)).hasClass("nav-part__checkbox--all")) {
-            this.filterBlock.find(".nav-part__checkbox--all").prop("checked", true);
-            this.filterBlock.find(".nav-part__item:not(.nav-part__item--all)").each((i, item) => {
-                $(item).find(".nav-part__checkbox").prop("checked", false);
+        if (e && $((e.currentTarget)).hasClass("aside-part__checkbox--all")) {
+            this.filterBlock.find(".aside-part__checkbox--all").prop("checked", true);
+            this.filterBlock.find(".aside-part__item:not(.aside-part__item--all)").each((i, item) => {
+                $(item).find(".aside-part__checkbox").prop("checked", false);
             });
         }
     }
     
     getCatsIdsArr() {
         let breedIdForRenderArr = [];
-        this.filterBlock.find(".nav-part__checkbox").each((i, item) => {
+        this.filterBlock.find(".aside-part__checkbox").each((i, item) => {
             if ($(item).prop("checked")) {
                 breedIdForRenderArr.push(item.id.slice(9, item.id.length));
             }
@@ -283,15 +283,15 @@ class BreedFilter {
     }
 
     createFilterEvents() {
-        this.filterBlock.children(".nav-part__letter").click(this.toggleFilterLetters);
-        this.filterBlock.find(".nav-part__item:not(.nav-part__item--all)").click((e) => {
+        this.filterBlock.children(".aside-part__letter").click(this.toggleFilterLetters);
+        this.filterBlock.find(".aside-part__item:not(.aside-part__item--all)").click((e) => {
             this.checkBreeds(e);
             this.getCatsIdsArr();
         });
-        this.filterBlock.find(".nav-part__checkbox--all").click((e) => {
+        this.filterBlock.find(".aside-part__checkbox--all").click((e) => {
             this.checkBreeds(e);
             this.getCatsIdsArr();
         });
     }
 }
-let filter = new BreedFilter(".nav-part__filter", breedData, catData);
+let filter = new BreedFilter(".aside-part__filter", breedData, catData);
