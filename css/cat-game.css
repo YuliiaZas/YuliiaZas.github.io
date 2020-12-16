@@ -1,0 +1,132 @@
+.game {
+    position: relative;
+    margin: 0 auto;
+    height: 51.5vw;
+    width: 90vw;
+    /* height: 90vw; */
+    background: url(../img/game/carpet.png) center /contain no-repeat border-box;
+}
+/* @media (min-aspect-ratio: 8/5) {} */
+.game__cat--1 {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    height: 45%;
+    width: 55%;
+    background: url(../img/game/happy-cat-b.png) center /contain no-repeat border-box;
+}
+.game__cat--2 {
+    position: absolute;
+    bottom: 2%;
+    right: 1%;
+    height: 54%;
+    width: 35%;
+    background: url(../img/game/happy-cat-d.png) center /contain no-repeat border-box;
+}
+
+.game__paw {
+    position: absolute;
+    z-index: 1;
+}
+.game__paw--1 {
+    top: 5%;
+    left: 45%;
+    height: 35%;
+    width: 15%;
+    /* border: 0.1px solid gray; */
+    border-radius: 75% 30%;
+    background-color: rgba(171, 139, 120, 0.6);
+}
+.game__paw--2 {
+    bottom: 20%;
+    right: 25%;
+    height: 35%;
+    width: 15%;
+    /* border: 0.1px solid gray; */
+    border-radius: 50%;
+    background-color: rgba(171, 139, 120, 0.6);
+}
+
+.game__ball {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    height: 10vw;
+    width: 10vw;
+    background: url(../img/game/cat-ball.png) center /contain no-repeat border-box;
+    border-radius: 50%;
+}
+
+.game__score,
+.game__speech-box  {
+    position: absolute;
+    border-radius: 10px;
+    border: 2px solid black;
+    background: linear-gradient(#fff, rgba(255, 255, 255, 0.5));
+    padding: 5px;
+}
+.game__speech-box {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.game__speech-box--1 {
+    top: 30%;
+    left: 15%;
+    width: 23vw;
+}
+.game__speech-box--2 {
+    top: 75%;
+    left: 60%;
+    min-width: 23vw;
+}
+.game__speech-box::before,
+.game__speech-box::after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+}
+.game__speech-box::before {
+    top: calc(-5vw - 5px);
+    right: calc(2.5vw - 2px);
+    border-top: calc(2.5vw + 2px) solid transparent;
+	border-right: calc(1.5vw + 2px) solid black;
+	border-bottom: calc(2.5vw + 2px) solid black;
+	border-left: calc(1.5vw + 2px) solid transparent;
+}
+.game__speech-box::after {
+    top: -5vw;
+    right: 2.5vw;
+    border-top: 2.5vw solid transparent;
+	border-right: 1.5vw solid #fff;
+	border-bottom: 2.5vw solid #fff;
+	border-left: 1.5vw solid transparent;
+}
+.game__speech-box--2::before {
+    top: calc(-3vw - 5px);
+    left: calc(12.5vw - 2px);
+    border-top: calc(1.5vw + 2px) solid transparent;
+	border-bottom: calc(1.5vw + 2px) solid black;
+}
+.game__speech-box--2::after {
+    top: -3vw;
+    left: 12.5vw;
+    border-top: 1.5vw solid transparent;
+	border-bottom: 1.5vw solid #fff;
+}
+
+.game__score {
+    bottom: 0;
+    font-size: 2rem;
+    margin: 2vw;
+    width: 2
+}
+.score__value {
+    display: inline-block;
+    width: 2rem;
+    text-align: center;
+}
