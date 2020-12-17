@@ -32,6 +32,14 @@
 .game__paw {
     position: absolute;
     z-index: 1;
+    --timeout: 2s;
+}
+@keyframes pawdisappear {
+    from {background-color: rgba(171, 139, 120, 0.6)}
+    to {background-color: rgba(171, 139, 120, 0)}
+}
+.paw-animation {
+    animation: pawdisappear var(--timeout) cubic-bezier(.83,0,.74,.79) ;
 }
 .game__paw--1 {
     top: 5%;
@@ -39,7 +47,6 @@
     height: 35%;
     width: 15%;
     border-radius: 75% 30%;
-    background-color: rgba(171, 139, 120, 0.6);
 }
 .game__paw--2 {
     bottom: 20%;
@@ -47,19 +54,32 @@
     height: 35%;
     width: 15%;
     border-radius: 50%;
-    background-color: rgba(171, 139, 120, 0.6);
 }
 
+/* @keyframes ballmove {
+    from {left: var(--xStart); top: var(--yStart)}
+    to {left: var(--xEnd); top: var(--yEnd)}
+  } */
 .game__ball {
     position: absolute;
     z-index: 2;
-    right: 0;
-    top: 0;
+    bottom: 6rem;
+    left: 2rem;
     height: 10vmin;
     width: 10vmin;
     background: url(../img/game/cat-ball.png) center /contain no-repeat border-box;
     border-radius: 50%;
+    /* animation: ballmove 1s ease forwards; */
+    --move-time: 0.5s;
+    transition: left var(--move-time) ease, top var(--move-time) ease, transform var(--move-time);
 }
+.ball-move {
+    left: var(--xEnd);
+    top: var(--yEnd);
+    /* transform: rotate(180deg); */
+    transform: rotate(var(--degEnd));
+}
+
 
 .game__score,
 .game__speech-box  {
@@ -94,7 +114,7 @@
     width: 0;
 }
 .game__speech-box::before {
-    top: calc(-5vmin - 5px);
+    top: calc(-5vmin - 4px);
     right: calc(10% - 2px);
     border-top: calc(2.5vmin + 2px) solid transparent;
 	border-right: calc(1.5vmin + 2px) solid black;
@@ -102,7 +122,7 @@
 	border-left: calc(1.5vmin + 2px) solid transparent;
 }
 .game__speech-box::after {
-    top: -5vmin;
+    top: calc(-5vmin + 1px);
     right: 10%;
     border-top: 2.5vmin solid transparent;
 	border-right: 1.5vmin solid #fff;
@@ -110,13 +130,13 @@
 	border-left: 1.5vmin solid transparent;
 }
 .game__speech-box--2::before {
-    top: calc(-3vmin - 5px);
+    top: calc(-3vmin - 4px);
     left: calc(55% - 2px);
     border-top: calc(1.5vmin + 2px) solid transparent;
 	border-bottom: calc(1.5vmin + 2px) solid black;
 }
 .game__speech-box--2::after {
-    top: -3vmin;
+    top: calc(-3vmin + 1px);
     left: 55%;
     border-top: 1.5vmin solid transparent;
 	border-bottom: 1.5vmin solid #fff;
@@ -132,4 +152,8 @@
     display: inline-block;
     width: 2rem;
     text-align: center;
+}
+
+.display-none {
+    display: none;
 }
