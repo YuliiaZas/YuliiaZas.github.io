@@ -42,7 +42,8 @@ class Game {
         console.log('startRounds');
         this.gates.addClass("display-none");
         this.speechBoxes.addClass("display-none");
-        
+
+        //to avoid cat-repeat more than 3 times
         let currentCat = Math.round((this.gates.length - 1) * Math.random() + 1);
         this.prevCat === currentCat ? this.sameCatTimes++ : this.sameCatTimes = 1;        
         if (this.sameCatTimes > 3) {
@@ -52,7 +53,8 @@ class Game {
             this.sameCatTimes = 1;
         }
         this.prevCat = currentCat;
-        
+
+        //to avoid speech-repeat
         let speech = null;
         do {
             speech = Math.round((MESSAGES.length - 0) * Math.random() + 0);
@@ -65,10 +67,11 @@ class Game {
         
         console.log("🚀 ~ file: cat-game.js ~ line 49 ~ Game ~ startRounds ~ currentCat", currentCat);
         let currentGate = this.game.children(`.game__paw--${currentCat}`);
-        currentGate.css("--timeout",`${TIMEOUT / 1000}s`);
         currentGate.removeClass("display-none");
+        currentGate.css("--timeout",`${TIMEOUT / 1000}s`); //css var for .paw-animation
         currentGate.addClass("paw-animation");
         
+        //currentSpeechBox disappear earlier than currentGate:
         setTimeout(() => currentSpeechBox.addClass("display-none"), TIMEOUT - 500);
         setTimeout(()=> {
             currentGate.removeClass("paw-animation");
