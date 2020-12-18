@@ -32,14 +32,14 @@
 .game__paw {
     position: absolute;
     z-index: 1;
-    --timeout: 2s;
+    --time-round: 2s;
 }
 @keyframes pawdisappear {
     from {background-color: rgba(171, 139, 120, 0.6)}
     to {background-color: rgba(171, 139, 120, 0)}
 }
 .paw-animation {
-    animation: pawdisappear var(--timeout) cubic-bezier(.83,0,.74,.79) ;
+    animation: pawdisappear var(--time-round) cubic-bezier(.83,0,.74,.79) ;
 }
 .game__paw--1 {
     top: 5%;
