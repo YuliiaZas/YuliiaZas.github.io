@@ -40,7 +40,6 @@ class Game {
         this.sameCatTimes = 1;
         this.scoreValue = 0;
 
-        this.isRoundStarted = false;
         this.ballPosition = null;
 
         this.createEvents();
@@ -63,9 +62,9 @@ class Game {
     }
 
     playGame () {
-        if (!this.isRoundStarted && this.scoreValue > LOSS && this.scoreValue < WIN) {
+        if (this.scoreValue > LOSS && this.scoreValue < WIN) {
             setTimeout(() => this.playRound(), TIME_BETWEEN_ROUNDS);
-        } else if (!this.isRoundStarted) {
+        } else  {
             this.resultBox.removeClass("display-none");
             if (this.scoreValue <= LOSS) {
                 this.result.html(MESSAGES.result.loss);
@@ -77,8 +76,6 @@ class Game {
 
     playRound () {
         this.ballPosition = null;
-        this.isRoundStarted = true;
-
         this.gates.addClass("display-none");
         this.speechBoxes.addClass("display-none");
 
@@ -114,15 +111,14 @@ class Game {
         //so the score is counted here:
         setTimeout(() => {
             currentSpeechBox.addClass("display-none");
-            this.ballPosition != null && this.ballPosition.hasClass(`game__paw--${currentCat}`) ? 
+            this.ballPosition && this.ballPosition.hasClass(`game__paw--${currentCat}`) ? 
                     this.scoreValue++ : this.scoreValue--;
             setTimeout(() => {
                 currentGate.removeClass("paw-animation");
                 currentGate.addClass("display-none");
-                this.isRoundStarted = false;
                 this.score.text(this.scoreValue);
 
-                if (this.ballPosition != null && this.ballPosition.hasClass(`game__paw--${currentCat}`)) {
+                if (this.ballPosition && this.ballPosition.hasClass(`game__paw--${currentCat}`)) {
                     this.moveBall()
                 };
 
