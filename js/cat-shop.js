@@ -34,8 +34,10 @@ class Catalog {
     }
 
     renderCatalog () {
+        console.log(this.catIdArr);
         this.catalogBlock.find(".goods").remove(); //clear catalog before filter result rendering 
         $.each(this.catIdArr, i => {
+            console.log("======")
             this.addCatInfo(this.catIdArr[i])
         });
     }
@@ -266,7 +268,7 @@ class BreedFilter {
         console.log(breedIdForRenderArr);
         let catsIdsArr = [];
         $(breedIdForRenderArr).each((i,item) => {
-            if (item === "all") {
+            if (item === "t-all") {
                 $(this.catData).each((index,cat) => {
                         catsIdsArr.push(cat.id);
                 });
@@ -278,6 +280,7 @@ class BreedFilter {
                 });
             }
         });
+        console.log(catsIdsArr);
         catalog = new Catalog(".catalog", catsIdsArr, catData, breedData, ownerData);
         return catsIdsArr;
     }

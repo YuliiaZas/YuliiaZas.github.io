@@ -1,0 +1,370 @@
+{
+    "cats": [
+        {   "id": "01C1",
+            "name": "Мэрит",
+            "breed": "norwood",
+            "sex": "Кошка",
+            "age": "8 лет",
+            "color": "голубой дымчатый",
+            "price": "4000",
+            "owner": "01",
+            "photo": {
+                "large": ["img/products/01C1_01.jpg", "img/products/01C1_02.jpg", "img/products/01C1_03.jpg", "img/products/01C1_04.jpg", "img/products/01C1_05.jpg", "img/products/01C1_06.jpg"],
+                "small": ["img/products/01C1_01-S.jpg", "img/products/01C1_02-S.jpg", "img/products/01C1_03-S.jpg", "img/products/01C1_04-S.jpg", "img/products/01C1_05-S.jpg", "img/products/01C1_06-S.jpg"]
+            }
+        },{ "id": "01C2",
+            "name": "Харрис",
+            "breed": "amwiryh",
+            "sex": "Кот",
+            "age": "5 лет",
+            "color": "серый биколор",
+            "price": "6000",
+            "owner": "01",
+            "photo": {
+                "large": ["img/products/01C2_01.jpg", "img/products/01C2_02.jpg", "img/products/01C2_03.jpg", "img/products/01C2_04.jpg"],
+                "small": ["img/products/01C2_01-S.jpg", "img/products/01C2_02-S.jpg", "img/products/01C2_03.jpg-S", "img/products/01C2_04-S.jpg"]
+            }
+        },
+        {
+            "id": "02C1",
+            "name": "Пандора",
+            "breed": "bengal",
+            "sex": "Кошка",
+            "age": "2 года",
+            "color": "золотой мрамор",
+            "price": "13000",
+            "owner": "02",
+            "photo": {
+                "large": ["img/products/02C1_01.jpg", "img/products/02C1_02.jpg"],
+                "small": ["img/products/02C1_01-S.jpg", "img/products/02C1_02-S.jpg"]
+            }
+        }, {
+            "id": "03C1",
+            "name": "Жульен",
+            "breed": "eushorth",
+            "sex": "Кот",
+            "age": "10 лет",
+            "color": "рыжий тикированный",
+            "price": "6000",
+            "owner": "03",
+            "photo": {
+                "large": ["img/products/03C1_01.jpg", "img/products/03C1_02.jpg", "img/products/03C1_03.jpg"],
+                "small": ["img/products/03C1_01-S.jpg", "img/products/03C1_02-S.jpg", "img/products/03C1_03-S.jpg"]
+            }
+        }, {
+            "id": "04C1",
+            "name": "Бриджит",
+            "breed": "calshine",
+            "sex": "Кошка",
+            "age": "10 лет",
+            "color": "серый мрамор",
+            "price": "16000",
+            "owner": "04",
+            "photo": {
+                "large": ["img/products/04C1_01.jpg", "img/products/04C1_02.jpg", "img/products/04C1_03.jpg", "img/products/04C1_04.jpg"],
+                "small": ["img/products/04C1_01-S.jpg", "img/products/04C1_02-S.jpg", "img/products/04C1_03-S.jpg", "img/products/04C1_04-S.jpg"]
+            }
+        }
+        ,{ "id": "05C1",
+            "name": "Джонни",
+            "breed": "lykoi",
+            "sex": "Кот",
+            "age": "7 лет",
+            "color": "черный солид",
+            "price": "15000",
+            "owner": "05",
+            "photo": {
+                "large": ["img/products/05C1_01.jpg", "img/products/05C1_03.jpg", "img/products/05C1_02.jpg"],
+                "small": ["img/products/05C1_01-S.jpg", "img/products/05C1_03-S.jpg", "img/products/05C1_02.jpg-S"]
+            }
+        },{ "id": "06C1",
+            "name": "Роджер",
+            "breed": "ragamuf",
+            "sex": "Кот",
+            "age": "6 лет",
+            "color": "рыжий биколор",
+            "price": "17000",
+            "owner": "06",
+            "photo": {
+                "large": ["img/products/06C1_01.jpg", "img/products/06C1_02.jpg", "img/products/06C1_03.jpg"],
+                "small": ["img/products/06C1_01-S.jpg", "img/products/06C1_02-S.jpg", "img/products/06C1_03.jpg-S"]
+            }
+        },{ "id": "06C2",
+            "name": "Оскар",
+            "breed": "eushorth",
+            "sex": "Кот",
+            "age": "7 лет",
+            "color": "рыжий тикированный",
+            "price": "14000",
+            "owner": "06",
+            "photo": {
+                "large": ["img/products/06C2_01.jpg", "img/products/06C2_02.jpg", "img/products/06C2_03.jpg"],
+                "small": ["img/products/06C2_01-S.jpg", "img/products/06C2_02-S.jpg", "img/products/06C2_03.jpg-S"]
+            }
+        },{ "id": "07C1",
+            "name": "Аника",
+            "breed": "amshorth",
+            "sex": "Кошка",
+            "age": "4 года",
+            "color": "серый тикированный",
+            "price": "7000",
+            "owner": "07",
+            "photo": {
+                "large": ["img/products/07C1_01.jpg", "img/products/07C1_02.jpg"],
+                "small": ["img/products/07C1_01-S.jpg", "img/products/07C1_02-S.jpg"]
+            }
+        },{ "id": "08C1",
+            "name": "Эбби",
+            "breed": "brshorth",
+            "sex": "Кошка",
+            "age": "7 лет",
+            "color": "голубой солид",
+            "price": "10000",
+            "owner": "08",
+            "photo": {
+                "large": ["img/products/08C1_01.jpg", "img/products/08C1_02.jpg", "img/products/08C1_03.jpg", "img/products/08C1_04.jpg"],
+                "small": ["img/products/08C1_01-S.jpg", "img/products/08C1_02-S.jpg", "img/products/08C1_03.jpg-S", "img/products/08C1_04.jpg-S"]
+            }
+        },{ "id": "08C2",
+            "name": "Фродо",
+            "breed": "ragdoll",
+            "sex": "Кот",
+            "age": "9 лет",
+            "color": "кремовый ван",
+            "price": "12000",
+            "owner": "08",
+            "photo": {
+                "large": ["img/products/08C2_01.jpg", "img/products/08C2_02.jpg", "img/products/08C2_03.jpg"],
+                "small": ["img/products/08C2_01-S.jpg", "img/products/08C2_02-S.jpg", "img/products/08C2_03.jpg-S"]
+            }
+
+        },{ "id": "09C1",
+            "name": "Винсент",
+            "breed": "angora",
+            "sex": "Кот",
+            "age": "5 лет",
+            "color": "голубоглазый альбинос",
+            "price": "9000",
+            "owner": "09",
+            "photo": {
+                "large": ["img/products/09C1_01.jpg", "img/products/09C1_02.jpg", "img/products/09C1_03.jpg", "img/products/09C1_04.jpg"],
+                "small": ["img/products/09C1_01-S.jpg", "img/products/09C1_02-S.jpg", "img/products/09C1_03.jpg-S", "img/products/09C1_04.jpg-S"]
+            }
+        },{ "id": "10C1",
+            "name": "Норман",
+            "breed": "eushorth",
+            "sex": "Кот",
+            "age": "1 год",
+            "color": "серый черепаховый биколор",
+            "price": "14000",
+            "owner": "10",
+            "photo": {
+                "large": ["img/products/10C1_01.jpg", "img/products/10C1_02.jpg", "img/products/10C1_03.jpg"],
+                "small": ["img/products/10C1_01-S.jpg", "img/products/10C1_02-S.jpg", "img/products/10C1_03.jpg-S"]
+            }
+        },{ "id": "10C2",
+            "name": "Мебиус",
+            "breed": "mandalay",
+            "sex": "Кот",
+            "age": "6 мес.",
+            "color": "черный солид",
+            "price": "14500",
+            "owner": "10",
+            "photo": {
+                "large": ["img/products/10C2_01.jpg", "img/products/10C2_02.jpg", "img/products/10C2_03.jpg"],
+                "small": ["img/products/10C2_01-S.jpg", "img/products/10C2_02-S.jpg", "img/products/10C2_03.jpg-S"]
+            }
+        },{ "id": "10C3",
+            "name": "Афина",
+            "breed": "bengal",
+            "sex": "Кошка",
+            "age": "1 год",
+            "color": "шоколадный мрамор",
+            "price": "8000",
+            "owner": "10",
+            "photo": {
+                "large": ["img/products/10C3_01.jpg", "img/products/10C3_02.jpg"],
+                "small": ["img/products/10C3_01-S.jpg", "img/products/10C3_02-S.jpg"]
+            }
+        },{ "id": "10C4",
+            "name": "Пако",
+            "breed": "manx",
+            "sex": "Кот",
+            "age": "6 мес.",
+            "color": "черный арлекин",
+            "price": "6000",
+            "owner": "10",
+            "photo": {
+                "large": ["img/products/10C4_01.jpg", "img/products/10C4_02.jpg", "img/products/10C4_03.jpg"],
+                "small": ["img/products/10C4_01-S.jpg", "img/products/10C4_02-S.jpg", "img/products/10C4_03.jpg-S"]
+            }
+        }
+    ],
+    "breeds": [
+        {   "id": "bengal",
+            "name": "Бенгальская кошка",
+            "description": "Потомка дикой азиатской леопардовой и домашней кошек не зря называют мини-леопардом. Деловой характер и любознательность  питомца не дадут вам заскучать.",
+            "hair": "короткошерстная",
+            "upkeep": "1",
+            "origin ": "США",
+            "price-range": "2"
+        }, {"id": "eushorth",
+            "name": "Европейская короткошерстная кошка",
+            "description": "Второе название породы – кельтская кошка. Прекрасно адаптируются к новым условиям, имеют уравновешенный характер и крепкое здоровье. Коты любят детей, поэтому прекрасно подойдут для семьи с шумными малышами.",
+            "hair": "короткошерстная",
+            "upkeep": "1",
+            "origin ": "страны Европы",
+            "price-range": "2"
+        }, {"id": "calshine",
+            "name": "Калифорнийская сияющая кошка",
+            "description": "Многочисленные скрещивания наделили этого маленького хищника шерстью, красиво переливающейся на солнце. Охотничий инстинкт можно полностью реализовать, заведя сияющую кошку в загородном доме.",
+            "hair": "короткошерстная",
+            "upkeep": "2",
+            "origin ": "США",
+            "price-range": "3"
+        }, {"id": "norwood",
+            "name": "Норвежская лесная кошка",
+            "description": "Норвежская лесная кошка – полудлинношерстная/длинношерстная порода, популярная в странах Северной Европы. Норвеги – это сочетание стати, красоты, интеллигентности и охотничьих навыков.",
+            "hair": "длинношерстная",
+            "upkeep": "2",
+            "origin ": "Норвегия",
+            "price-range": "1"
+        }, {"id": "amwiryh",
+            "name": "Американская жесткошерстная",
+            "description": "Мутация подарила американской жесткошерстной кошке упругую пружинистую шерсть, довольно грубой на ощупь. Спокойный характер, охотничьи инстинкты и любовь кошки к детям прекрасно подойдут для большой семьи.",
+            "hair": "короткошерстная",
+            "upkeep": "1",
+            "origin ": "США",
+            "price-range": "2"
+        }, {"id": "lykoi",
+            "name": "Ликой",
+            "description": "Внешний вид ликоя неоднозначен – шерсть у этих кошек-оборотней растет клоками, а чалый окрас только усиливает необычность породы. В течение года количество шерсти у кошек различно, а порой они могут остаться совсем голыми на несколько недель.",
+            "hair": "короткошерстная",
+            "upkeep": "2",
+            "origin ": "США",
+            "price-range": "3"
+        }, {"id": "ragamuf",
+            "name": "Рагамаффин",
+            "description": "Рагамаффин – крупная кошка с густой шикарной шерстью средней длины, которая представлена во всевозможных окрасах и оттенках. Покладистый нрав и сообразительность животного сразу же располагают к себе, а способность уживаться со всеми домочадцами возводят его в ранг самых желаемых питомцев.",
+            "hair": "полудлинношерстная",
+            "upkeep": "2",
+            "origin ": "США",
+            "price-range": "3"
+        }, {"id": "amshorth",
+            "name": "Американская короткошерстная",
+            "description": "Предки этой породы были завезены в США европейскими колонистами в 17 веке. Независимость и интеллигентность заложены в американской короткошерстной на генетическом уровне. Прекрасно подойдет для одиноких или занятых хозяев.",
+            "hair": "короткошерстная",
+            "upkeep": "1",
+            "origin ": "США",
+            "price-range": "2"
+        }, {"id": "brshorth",
+            "name": "Британская короткошерстная кошка",
+            "description": "Кошки с короткой плюшевой шерстью и густым подшерстком. Характер истинного англичанина – самодостаточность, спокойствие и щепотка лени. Отличный питомец для деловых людей.",
+            "hair": "2",
+            "upkeep": "Великобритания",
+            "origin ": "2",
+            "price-range": ["короткошерстная", "полудлинношерстная"]
+        }, {"id": "ragdoll",
+            "name": "Рэгдолл",
+            "description": "Порода рэгдолл (в переводе с английского «тряпичная кукла») — единственная в мире порода, на которую выдан патент. Кошки имеют способность буквально повисать на руках хозяев, как тряпичные куклы. У них приятный, мягкий тембр голоса, который они подают крайне редко.",
+            "hair": "полудлинношерстная",
+            "upkeep": "2",
+            "origin ": "США",
+            "price-range": "2"
+        }, {"id": "angora",
+            "name": "Ангорская кошка (Турецкая ангора)",
+            "description": "Независимые кошки с шелковистой шерстью, которые привязываются к одному члену семьи. Такой однолюб станет преданным компаньоном одинокого человека.",
+            "hair": "полудлинношерстная",
+            "upkeep": "2",
+            "origin ": "Турция",
+            "price-range": "2"
+        }, {"id": "mandalay",
+            "name": "Мандалай",
+            "description": "Мини-пантера в кошачьем мире. Насыщенно-черный оттенок шерсти – труд опытных заводчиков. В других странах эти бархатные кошки известны, как азиатские или австралийские бомбеи.",
+            "hair": "короткошерстная",
+            "upkeep": "1",
+            "origin ": "Новая Зеландия",
+            "price-range": "3"
+        }, {"id": "manx",
+            "name": "Мэнская кошка (Мэнкс)",
+            "description": "Мэнксы делятся на 4 вида по длине своего укороченного хвостика. Внешне мэнкс напоминает кролика из-за разницы в длине передних и задних ног. Удлиненные задние ноги позволяют мэнксу высоко прыгать и делают походку пружинистой.",
+            "hair": "короткошерстная",
+            "upkeep": "2",
+            "origin ": "остров Мэн",
+            "price-range": "2"
+        }
+    ],
+    "owners": [
+        {
+            "id": "01",
+            "name": "Brett Jordan",
+            "unsplash-link": "https://unsplash.com/@brett_jordan",
+            "country": "Великобритания",
+            "area": "Лондон",
+            "website": "x1brettstuff.blogspot.com"
+        },{
+            "id": "02",
+            "name": "Caleb Woods",
+            "unsplash-link": "https://unsplash.com/@caleb_woods",
+            "country": "США",
+            "area": "Область залива Сан-Франциско",
+            "website": ""
+        }, {
+            "id": "03",
+            "name": "Chris J. Davis",
+            "unsplash-link": "https://unsplash.com/@chrisjdavis",
+            "country": "США",
+            "area": "Сан-Диего",
+            "website": "chrisjdavis.darkroom.tech"
+        }, {
+            "id": "04",
+            "name": "Jan Haerer",
+            "unsplash-link": "https://unsplash.com/@topazspirit",
+            "country": "США",
+            "area": "Ок-Ридж",
+            "website": "topazspirits.com"
+        },{
+            "id": "05",
+            "name": "oao Alexandre Paulo",
+            "unsplash-link": "https://unsplash.com/@alexandrecpaulo",
+            "country": "Португалия",
+            "area": "Лиссабон",
+            "website": ""
+        },{
+            "id": "06",
+            "name": "Kabo",
+            "unsplash-link": "https://unsplash.com/@kabofoods",
+            "country": "Канада",
+            "area": "Торонто",
+            "website": "kabo.co"
+        },{
+            "id": "07",
+            "name": "Kari Shea",
+            "unsplash-link": "https://unsplash.com/@karishea",
+            "country": "США",
+            "area": "Гранд-Рапидс, Мичиган",
+            "website": "karisheacreative.com"
+        },{
+            "id": "08",
+            "name": "Larissa Dupont",
+            "unsplash-link": "https://unsplash.com/@lalieken_99",
+            "country": "Бельгия",
+            "area": "Зоттегем",
+            "website": ""
+        },{
+            "id": "09",
+            "name": "Rusty Watson",
+            "unsplash-link": "https://unsplash.com/@rustyct1",
+            "country": "США",
+            "area": "Коннектикут",
+            "website": ""
+        },{
+            "id": "10",
+            "name": "Millie Wollney",
+            "unsplash-link": "https://unsplash.com/@theluckyneko",
+            "country": "США",
+            "area": "Нью-Джерси - Нью-Йорк",
+            "website": "www.FOWArescue.com"
+        }
+    ]
+}

@@ -40,12 +40,13 @@ class Game {
         this.sameCatTimes = 1;
         this.scoreValue = 0;
 
+        this.isGameStarted = false;
         this.ballPosition = null;
 
         this.createEvents();
     }
 
-    startGame () {
+    startGameScreen () {
         this.lastSpeech = null;
         this.prevCat = null;
         this.sameCatTimes = 1;
@@ -63,6 +64,7 @@ class Game {
 
     playGame () {
         if (this.scoreValue > LOSS && this.scoreValue < WIN) {
+
             setTimeout(() => this.playRound(), TIME_BETWEEN_ROUNDS);
         } else  {
             this.resultBox.removeClass("display-none");
@@ -148,9 +150,9 @@ class Game {
     }
 
     createEvents () {
-        this.startGame();
+        this.startGameScreen();
         this.game.click(this.moveBall.bind(this));
-        this.btn.click(this.startGame.bind(this));
+        this.btn.click(this.startGameScreen.bind(this));
     }
 }
 let game = new Game ("#game");
