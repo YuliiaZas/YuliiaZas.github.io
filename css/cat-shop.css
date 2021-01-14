@@ -3,6 +3,14 @@
     padding: 0;
 }
 
+.shop {
+    display: flex;
+    flex-direction: row;
+}
+.aside {
+    width: 250px;
+}
+
 .catalog {
     max-width: 930px;
     margin: 20px auto;
@@ -16,7 +24,7 @@
     grid-auto-rows: calc(300px + 100px);
     gap: 15px;
 }
-.picture {
+.goods__picture-wrapper {
     position: relative;
     height: 300px;
 }
@@ -27,14 +35,14 @@
         grid-auto-rows: minmax(auto, calc(33vw + 100px));
         gap: 0.5vw;
     }
-    .picture {
+    .goods__picture-wrapper {
         height: 33vw;
     }
 }
 .goods__id {
     display: none;
 }
-.picture__owner {
+.goods__picture-owner {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -46,25 +54,25 @@
     font-size: 12px;
 }
 
-.picture__img {
+.goods__picture-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
 }
 
-/* <div class="picture">
-    <img class="picture__img" src="...">
-    <img class="picture__img" src="...">
+/* <div class="goods__picture-wrapper">
+    <img class="goods__picture-img" src="...">
+    <img class="goods__picture-img" src="...">
 </div> */
 
-.picture__img:not(:first-child) {
+.goods__picture-img:not(:first-child) {
     display: none;
 }
-.picture:hover .picture__img:nth-child(2) {
+.goods__picture-wrapper:hover .goods__picture-img:nth-child(2) {
     display: initial;
 }
-.picture:hover .picture__img:not(:nth-child(2)) {
+.goods__picture-wrapper:hover .goods__picture-img:not(:nth-child(2)) {
     display: none;
 }
 

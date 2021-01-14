@@ -9,20 +9,79 @@
 <body>
     <header class="header">
         <nav class="header__links">
-            <ul>
-                <li><a href="index.html">Магазин</a></li>
-                <li><a href="breeds.html">Породы</a></li>
-                <li><a href="cat-game.html">Игра</a></li>
-            </ul>
+            <a href="index.html">Магазин</a>
+            <a href="breeds.html">Породы</a>
+            <a href="cat-game.html">Игра</a>
+            <a href="cart.html">Корзина</a>
         </nav>
         <div class="header__bg">
 
         </div>
     </header>
 
-    <main>
+    <main class="shop">
         <aside class="aside">
-            <div class="aside__aside-part aside-part">
+            <div class="aside__name">Фильтры</div>
+            <ul class="filter">
+                <li class="filter__group filter__group--breed">
+                    <span class="filter__group-name">Породы</span>
+                    <ul class="filter__group-list filter__group-list--breed">
+                        <li class="filter-item">
+                            <label class="filter-item__label">
+                                <input class="filter-item__checkbox" type="checkbox" data-filter="breed" data-id="all" checked>
+                                <span class="filter-item__label-name">Все</span>
+                            </label>
+                        </li>
+                        <!-- <li class="filter-items">
+                            <span class="filter-letter">А</span>
+                            <ul>
+                                <li class="filter-item">
+                                    <label class="filter-item__label">
+                                        <input class="filter-item__checkbox" type="checkbox" name="amwiryh">
+                                        <span class="filter-item__label-name">Американская жесткошерстная</span>
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label class="filter-item__label">
+                                        <input class="filter-item__checkbox" type="checkbox" name="amshorth">
+                                        <span class="filter-item__label-name">Американская короткошерстная</span>                                        
+                                    </label>
+                                </li>
+                                <li class="filter-item">
+                                    <label class="filter-item__label">
+                                        <input class="filter-item__checkbox" type="checkbox" name="angora">
+                                        <span class="filter-item__label-name">Ангорская кошка (Турецкая ангора)</span>                                        
+                                    </label>
+                                </li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                </li>
+                <li class="filter__group filter__group--sex">
+                    <span class="filter__group-name">Пол</span>
+                    <ul class="filter__group-list filter__group-list--sex">
+                        <li class="filter-item">
+                            <label class="filter-item__label">
+                                <input class="filter-item__checkbox" type="checkbox" data-filter="sex" data-id="all" checked>
+                                <span class="filter-item__label-name">Все</span>
+                            </label>
+                        </li>
+                        <!-- <li class="filter-item">
+                            <label class="filter-item__label">
+                                <input class="filter-item__checkbox" type="checkbox" name="male">
+                                <span class="filter-item__label-name">Кот</span>
+                            </label>
+                        </li>
+                        <li class="filter-item">
+                            <label class="filter-item__label">
+                                <input class="filter-item__checkbox" type="checkbox" name="female">
+                                <span class="filter-item__label-name">Кошка</span>
+                            </label>
+                        </li> -->
+                    </ul>
+                </li>
+            </ul>
+            <!-- <div class="aside__aside-part aside-part">
                 <div class="aside-part__name">Породы</div>
                 <ul class="aside-part__filter">
                     <li class="aside-part__letter aside-part__letter--all" data-letter="all">
@@ -40,8 +99,8 @@
                             <li class="aside-part__item aside-part__item--all">
                                 <span class="aside-part__label aside-part__label--all aside-part__label--all" >${breedName}</span>
                             </li>-->
-                        </ul>
-                    </li>
+                        <!-- </ul>
+                    </li> -->
                     <!-- <li class="aside-part__letter" data-letter="А">
                         <a href="#" class="aside-part__link">А-->
                             <!-- <input type="checkbox" class="aside-part__checkbox" id="aside-part-А"> -->
@@ -68,73 +127,187 @@
                             </li>
                         </ul>
                     </li> -->
-                </ul>
-            </div>
+                <!-- </ul>
+            </div> -->
         </aside>
 
         <section class="catalog">
-            <!-- <article class="catalog__goods goods">
-                <div class="goods__id">02C1</div>
-                <div class="goods__picture picture">
-                    <img class="picture__img" src="https://i.postimg.cc/nrMhGzTP/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg" alt="Кошка, 2 года, породы Бенгальская кошка, окрас">
-                    <img class="picture__img" src="https://i.postimg.cc/qR17KncK/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg" alt="">
-                    <a class="picture__owner" href="https://unsplash.com/@caleb_woods?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">by Caleb Woods</a>
+            <div class="catalog__control">
+                <div class="catalog__sort">
+                    <label class="catalog__sort-label" for="sort">Choose a car:</label>
+                    <select  class="catalog__sort-value" name="sort" id="sort">
+                        <option value="default" selected>По умолчанию</option>
+                        <option value="price-ascend">Стоимость: увеличение</option>
+                        <option value="price-descend">Стоимость: уменьшение</option>
+                        <option value="age-ascend">Возраст: увеличение</option>
+                        <option value="age-descend">Возраст: уменьшение</option>
+                    </select>
                 </div>
-                <div class="goods__description description">
-                    <div class="description__name">Пандора</div>
-                    <div class="description__breed">Бенгальская кошка</div>
-                    <div class="description__character">
-                        <span class="description__sex">Кошка</span>
-                        <span class="description__age">2 года</span>
+            </div>
+            <div class="catalog__content">
+
+            </div>
+            <!-- <article class="goods">
+                <div class="goods__id">02C1</div>
+                <div class="goods__picture-wrapper">
+                    <img class="goods__picture-img" src="https://i.postimg.cc/nrMhGzTP/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg" alt="Кошка, 2 года, породы Бенгальская кошка, окрас">
+                    <img class="goods__picture-img" src="https://i.postimg.cc/qR17KncK/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg" alt="">
+                    <a class="goods__picture-owner" href="https://unsplash.com/@caleb_woods?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">by Caleb Woods</a>
+                </div>
+                <div class="goods__description">
+                    <div class="goods__name">Пандора</div>
+                    <div class="goods__breed">Бенгальская кошка</div>
+                    <div class="goods__character">
+                        <span class="goods__sex">Кошка</span>
+                        <span class="goods__age">2 года</span>
                     </div>  
                 </div>
-                <div class="goods__price price">
-                    <span class="price__value">13000</span>
-                    <button class="price__btn" type="button">В корзину</button>
+                <hr>
+                <div class="purchase">
+                    <div class="purchase__prices">
+                        <div class="purchase__old-price"></div>
+                        <div class="purchase__new-price">13000</div>
+                    </div>
+                    <button class="button purchase__button" type="button">В корзину</button>
+                </div>
+                <!-- <div class="goods__footer">
+                    <div class="goods__prices">
+                        <div class="goods__old-price"></div>
+                        <div class="goods__price">13000</div>
+                    </div>
+                    <button class="button button--goods" type="button">В корзину</button>
+                </div> -->
+            <!-- </article> 
+    
+            <article class="goods">
+                <div class="goods__id">02C1</div>
+                <div class="goods__picture-wrapper">
+                    <img class="goods__picture-img" src="https://i.postimg.cc/nrMhGzTP/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg" alt="Кошка, 2 года, породы Бенгальская кошка, окрас">
+                    <img class="goods__picture-img" src="https://i.postimg.cc/qR17KncK/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg" alt="">
+                    <a class="goods__picture-owner" href="https://unsplash.com/@caleb_woods?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">by Caleb Woods</a>
+                </div>
+                <div class="goods__description">
+                    <div class="goods__name">Пандора</div>
+                    <div class="goods__breed">Бенгальская кошка</div>
+                    <div class="goods__character">
+                        <span class="goods__sex">Кошка</span>
+                        <span class="goods__age">2 года</span>
+                    </div>  
+                </div>
+                <hr>
+                <div class="purchase">
+                    <div class="purchase__prices">
+                        <div class="purchase__old-price"></div>
+                        <div class="purchase__new-price">13000</div>
+                    </div>
+                    <button class="button purchase__button" type="button">В корзину</button>
                 </div>
             </article>
     
-            <article class="catalog__goods goods">
+            <article class="goods">
                 <div class="goods__id">02C1</div>
-                <div class="goods__picture picture">
-                    <img class="picture__img" src="https://i.postimg.cc/nrMhGzTP/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg" alt="Кошка, 2 года, породы Бенгальская кошка, окрас">
-                    <img class="picture__img" src="https://i.postimg.cc/qR17KncK/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg" alt="">
-                    <a class="picture__owner" href="https://unsplash.com/@caleb_woods?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">by Caleb Woods</a>
+                <div class="goods__picture-wrapper">
+                    <img class="goods__picture-img" src="https://i.postimg.cc/nrMhGzTP/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg" alt="Кошка, 2 года, породы Бенгальская кошка, окрас">
+                    <img class="goods__picture-img" src="https://i.postimg.cc/qR17KncK/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg" alt="">
+                    <a class="goods__picture-owner" href="https://unsplash.com/@caleb_woods?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">by Caleb Woods</a>
                 </div>
-                <div class="goods__description description">
-                    <div class="description__name">Пандора</div>
-                    <div class="description__breed">Бенгальская кошка</div>
-                    <div class="description__character">
-                        <span class="description__sex">Кошка</span>
-                        <span class="description__age">2 года</span>
+                <div class="goods__description">
+                    <div class="goods__name">Пандора</div>
+                    <div class="goods__breed">Бенгальская кошка</div>
+                    <div class="goods__character">
+                        <span class="goods__sex">Кошка</span>
+                        <span class="goods__age">2 года</span>
                     </div>  
                 </div>
-                <div class="goods__price price">
-                    <span class="price__value">13000</span>
-                    <button class="price__btn" type="button">В корзину</button>
-                </div>
-            </article>
-    
-            <article class="catalog__goods goods">
-                <div class="goods__id">02C1</div>
-                <div class="goods__picture picture">
-                    <img class="picture__img" src="https://i.postimg.cc/nrMhGzTP/caleb-woods-9-Kp-Qr-PEy8-P8-unsplash.jpg" alt="Кошка, 2 года, породы Бенгальская кошка, окрас">
-                    <img class="picture__img" src="https://i.postimg.cc/qR17KncK/caleb-woods-Yq-S1xe9o9a-U-unsplash.jpg" alt="">
-                    <a class="picture__owner" href="https://unsplash.com/@caleb_woods?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">by Caleb Woods</a>
-                </div>
-                <div class="goods__description description">
-                    <div class="description__name">Пандора</div>
-                    <div class="description__breed">Бенгальская кошка</div>
-                    <div class="description__character">
-                        <span class="description__sex">Кошка</span>
-                        <span class="description__age">2 года</span>
-                    </div>  
-                </div>
-                <div class="goods__price price">
-                    <span class="price__value">13000</span>
-                    <button class="price__btn" type="button">В корзину</button>
+                <hr>
+                <div class="purchase">
+                    <div class="purchase__prices">
+                        <div class="purchase__old-price"></div>
+                        <div class="purchase__new-price">13000</div>
+                    </div>
+                    <button class="button purchase__button" type="button">В корзину</button>
                 </div>
             </article> -->
+        </section>
+
+        <section class="popup shop__popup">
+            <div class="popup__close-btn">&#10005;</div>
+            <div class="popup__wrapper">
+                <div class="popup__header">
+                    <div class="item-name">Имя</div>
+                </div>
+
+                <div class="popup__main">
+                    <div class="popup__main-section">
+                        <div class="slider">
+                            <div class="slider__prev-btn">&#10094;</div>
+                            <div class="slider__next-btn">&#10095;</div>
+                            <div class="slider__wrapper">
+                                <div class="slider__box">
+                                    <div class="slider__slide">
+                                        <img src="" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="popup__main-section">
+                        <div class="purchase">
+                            <div class="purchase__prices">
+                                <div class="purchase__old-price"></div>
+                                <div class="purchase__new-price">13000</div>
+                            </div>
+                            <button class="button purchase__button" type="button">В корзину</button>
+                        </div>
+                        <div class="description">
+                            <div class="description__item">
+                                <div class="description__label">Пол</div>
+                                <div class="description__value">Кошка</div>
+                            </div>
+                            <div class="description__item">
+                                <div class="description__label">Возраст</div>
+                                <div class="description__value">5 лет</div>
+                            </div>
+                            <div class="description__item">
+                                <div class="description__label">Порода</div>
+                                <div class="description__value">Ликой</div>
+                            </div>
+                            <div class="description__item">
+                                <div class="description__label">Окрас</div>
+                                <div class="description__value">Рыжий</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup__footer">
+                    <div class="description__item">
+                        <div class="description__label description__label--justify">Характеристики породы</div>
+                        <div class="description__value description__value--justify">Дружелюбны</div>
+                    </div>
+                    <div class="description__item">
+                        <div class="description__label">Происхождение породы</div>
+                        <div class="description__value description__value">США</div>
+                    </div>
+                    <div class="description__item">
+                        <div class="description__label">Шерсть</div>
+                        <div class="description__value description__value">длинношерстные</div>
+                    </div>
+                    <div class="description__item">
+                        <div class="description__label">Сложность ухода</div>
+                        <div class="description__value description__value">1 из 3</div>
+                    </div>
+                    <div class="popup__footer-section">
+                        <div class="description__item">
+                            <div class="description__label description__label--justify">Владелец</div>
+                            <div class="description__value description__value--justify">Имя, страна</div>
+                            <div class="description__value description__value--justify">
+                                <a class="description__link" href="#Ссылка">Ссылка</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -144,7 +317,7 @@
 
     <script src="js/jquery-3.5.1.min.js"></script>
 <!--     <script src="js/jquery.cookie.js"></script> -->
-    <!-- <script src="js/cat-shop_GOOD_copy.js"></script> -->
+                <!-- <script src="js/cat-shop_GOOD_copy.js"></script> -->
     <script src="js/cat-shop.js"></script>
 
 </body>
