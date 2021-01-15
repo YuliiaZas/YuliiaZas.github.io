@@ -15,8 +15,8 @@ getData("json/bd.json").then(function(json) {
     const sexFilter = new Filter(json, ".filter__group-list--sex");
 
     const sortBox = document.querySelector("#sort");
-    let filterRes = {};
 
+    let filterRes = {};
     document.addEventListener("filter-check", function(e) { 
         filterRes[e.detail.filterName] = e.detail.filterValueArr;
         cats.filterCatalog(filterRes);
@@ -29,283 +29,244 @@ getData("json/bd.json").then(function(json) {
     }
 })
 
-    class Catalog {
-        constructor(dbJson, cssSelector, filterData, sortType) {
-            this.dbJson = dbJson;
-            this.catData = this.dbJson.cats;
-            this.breedData = this.dbJson.breeds;
-            this.ownerData = this.dbJson.owners;
-            this.catalogBox = document.querySelector(cssSelector);
-            this.renderCatalog(this.catData);
-        }
-        
-        filterCatalog(filterValue) {
-            let resultData = null;
-            let res = (function getFilteredData(filterData, filterGroup, data) {
-                if (Array.isArray(filterData)) {
-                    return data.filter(item => {
-                        return (filterData.includes("all")) ? item : 
-                            filterData.includes(item[filterGroup]);
-                    });
-                } else {
-                    for (let filterGroup in filterData) {
-                        if (resultData === null) { resultData = data; }
-                        resultData = getFilteredData(filterData[filterGroup], filterGroup, resultData);
-                    }
-                    console.log(resultData);
-                    return resultData;
-                }
-            }(filterValue, null, JSON.parse(JSON.stringify(this.catData))));
-            this.renderCatalog(resultData);
-            return res;
-        }
-
-
-        sortCatalog(sortValue, filterValue) {
-            let filteredData = Object.keys(filterValue).length  === 0 ? JSON.parse(JSON.stringify(this.catData)) : this.filterCatalog(filterValue);
-
-            let arr = sortValue.match(/\w+/gi);
-            let sortType = arr[0];
-            let sortDirection = arr[arr.length - 1];
-
-            if (sortType === "default") {
-                filteredData = JSON.parse(JSON.stringify(this.catData));
+class Catalog {
+    constructor(dbJson, cssSelector) {
+        this.dbJson = dbJson;
+        this.catData = this.dbJson.cats;
+        this.breedData = this.dbJson.breeds;
+        this.ownerData = this.dbJson.owners;
+        this.catalogBox = document.querySelector(cssSelector);
+        this.renderCatalog(this.catData);
+    }
+    
+    filterCatalog(filterValue) {
+        let resultData = null;
+        let res = (function getFilteredData(filterData, filterGroup, data) {
+            if (Array.isArray(filterData)) {
+                return data.filter(item => {
+                    return (filterData.includes("all")) ? item : 
+                        filterData.includes(item[filterGroup]);
+                });
             } else {
-                if (sortType === "age") {
-                    filteredData.forEach(item => {
-                        item.ageYear = (/мес/i).test(item.age) ? parseInt(item.age) / 12 : parseInt(item.age);
-                    });
-                    sortType = "ageYear";
+                for (let filterGroup in filterData) {
+                    if (resultData === null) { resultData = data; }
+                    resultData = getFilteredData(filterData[filterGroup], filterGroup, resultData);
                 }
-                if (sortDirection === "ascend"){
-                    filteredData.sort((a, b) => {
-                        return parseInt(a[sortType])  > parseInt(b[sortType]) ? 1 : -1;
-                    });
-                } else if (sortDirection === "descend") {
-                    filteredData.sort((b, a) => {
-                        return parseInt(a[sortType]) > parseInt(b[sortType]) ? 1 : -1;
-                    });
-                }
+                console.log(resultData);
+                return resultData;
             }
-            this.renderCatalog(filteredData);
+        }(filterValue, null, JSON.parse(JSON.stringify(this.catData))));
+        this.renderCatalog(resultData);
+        return res;
+    }
+
+
+    sortCatalog(sortValue, filterValue) {
+        let filteredData = Object.keys(filterValue).length  === 0 ? JSON.parse(JSON.stringify(this.catData)) : this.filterCatalog(filterValue);
+
+        let arr = sortValue.match(/\w+/gi);
+        console.log(arr);
+        let sortType = arr[0];
+        let sortDirection = arr[arr.length - 1];
+
+        if (sortType === "default") {
+            return filteredData;
+        } else {
+            if (sortType === "age") {
+                filteredData.forEach(item => {
+                    item.ageYear = (/мес/i).test(item.age) ? parseInt(item.age) / 12 : parseInt(item.age);
+                });
+                sortType = "ageYear";
+            }
+            if (sortDirection === "ascend"){
+                filteredData.sort((a, b) => {
+                    return parseInt(a[sortType])  > parseInt(b[sortType]) ? 1 : -1;
+                });
+            } else if (sortDirection === "descend") {
+                filteredData.sort((b, a) => {
+                    return parseInt(a[sortType]) > parseInt(b[sortType]) ? 1 : -1;
+                });
+            }
         }
+        this.renderCatalog(filteredData);
+    }
 
-        renderCatalog(data) {
-            if (this.catalogBox.querySelectorAll(".goods")) {
-                this.catalogBox.querySelectorAll(".goods").forEach(item => item.remove())
-            };
+    renderCatalog(data) {
+        if (this.catalogBox.querySelectorAll(".goods")) {
+            this.catalogBox.querySelectorAll(".goods").forEach(item => item.remove());
+        };
 
-            data.forEach(cat => {
-                let catBreed = this.breedData.find(item => item.id === cat.breed);
-                let catOwner = this.ownerData.find(item => item.id === cat.owner);
-                let catOwnerHtml = `<a class="goods__picture-owner" href="${catOwner["unsplash-link"]}" target="_blank">by ${catOwner.name}</a>`;
-                
-                let catPhotosSmallArr = cat.photo.large;
-                let catImgAlt = `${cat.sex} ${cat.name}, ${cat.age}, ${cat.color}`;
-                let catImgsHtml = `<img class="goods__picture-img" src="${catPhotosSmallArr[0]}" alt="${catImgAlt}">`;
-                if (catPhotosSmallArr.length > 1) {
-                    catImgsHtml += `
-                    <img class="goods__picture-img" src="${catPhotosSmallArr[1]}" alt="${catImgAlt}">`;
+        data.forEach(cat => {
+            let catBreed = this.breedData.find(item => item.id === cat.breed);
+            let catOwner = this.ownerData.find(item => item.id === cat.owner);
+            let catOwnerHtml = `<a class="goods__picture-owner" href="${catOwner["unsplash-link"]}" target="_blank">by ${catOwner.name}</a>`;
+            
+            let catPhotosSmallArr = cat.photo.large;
+            let catImgAlt = `${cat.sex} ${cat.name}, ${cat.age}, ${cat.color}`;
+            let catImgsHtml = `<img class="goods__picture-img" src="${catPhotosSmallArr[0]}" alt="${catImgAlt}">`;
+            if (catPhotosSmallArr.length > 1) {
+                catImgsHtml += `
+                <img class="goods__picture-img" src="${catPhotosSmallArr[1]}" alt="${catImgAlt}">`;
+            }
+
+            let catArticleHtml = `<article class="goods">
+                <div class="goods__id">${cat.id}</div>
+                <div class="goods__picture-wrapper">
+                    ${catImgsHtml}
+                    ${catOwnerHtml}
+                </div>
+                <div class="goods__description">
+                    <div class="goods__name">${cat.name}</div>
+                    <div class="goods__breed">${catBreed.name}</div>
+                    <div class="goods__character">
+                        <span class="goods__sex">${cat.sex},</span>
+                        <span class="goods__age">${cat.age}</span>
+                    </div>  
+                </div>
+                <hr>
+                <div class="goods__footer">
+                    <div class="goods__prices">
+                        <!--div class="goods__old-price"></div-->
+                        <div class="goods__price">${cat.price} грн.</div>
+                    </div>
+                    <button class="button button--goods" type="button">В корзину</button>
+                </div>
+            </article>`;
+
+            this.catalogBox.insertAdjacentHTML('beforeEnd', catArticleHtml)                                                    
+        })
+
+    }
+}
+
+
+class Filter {
+    constructor(dbJson, cssSelector) {
+        this.dbJson = dbJson;
+        this.catData = this.dbJson.cats;
+        this.breedData = this.dbJson.breeds;
+        this.cssSelector = cssSelector;
+        this.filterItemAllUl = document.querySelector(this.cssSelector);
+        this.render();
+
+        this.filterItemAllUl.addEventListener('change', (e) => {
+            var event = new CustomEvent("filter-check", {
+                bubbles: true,
+                detail: {
+                    filterName: e.target.dataset.filter,
+                    filterValueArr: this.checkItems(e)
                 }
+            });
+            this.filterItemAllUl.querySelector(".filter-item__checkbox").dispatchEvent(event);
+        });
+    }
 
-                let catArticleHtml = `<article class="goods">
-                    <div class="goods__id">${cat.id}</div>
-                    <div class="goods__picture-wrapper">
-                        ${catImgsHtml}
-                        ${catOwnerHtml}
-                    </div>
-                    <div class="goods__description">
-                        <div class="goods__name">${cat.name}</div>
-                        <div class="goods__breed">${catBreed.name}</div>
-                        <div class="goods__character">
-                            <span class="goods__sex">${cat.sex},</span>
-                            <span class="goods__age">${cat.age}</span>
-                        </div>  
-                    </div>
-                    <hr>
-                    <div class="goods__footer">
-                        <div class="goods__prices">
-                            <!--div class="goods__old-price"></div-->
-                            <div class="goods__price">${cat.price} грн.</div>
-                        </div>
-                        <button class="button button--goods" type="button">В корзину</button>
-                    </div>
-                </article>`;
+    render() {
+        const filterType = this.cssSelector.replace(/.+--/,"");
 
-                this.catalogBox.insertAdjacentHTML('beforeEnd', catArticleHtml)                                                    
+        // "breed" filter is unique - it contains groups.
+        // other filters (including "sex") may be created 
+        // in simpler way - w/o groups (see else if)
+        if (filterType === "breed") {
+            let breedFirstLetters = [];
+            let breedNames = [];
+            this.breedData.forEach(breed => {
+                if (!breedFirstLetters.includes(breed.name[0])) {
+                    breedFirstLetters.push(breed.name[0])
+                }
+                breedNames.push(breed.name);
+            });
+            breedFirstLetters.sort();
+            breedNames.sort();
+
+            breedFirstLetters.forEach(letter => {
+                let filerItemsInGroup = "";
+                breedNames.forEach(breedName => {
+                    if (breedName[0] === letter) {
+                        let appropBreed = this.breedData.find(breed => breed.name === breedName);
+                        filerItemsInGroup += `<li class="filter-item">
+                            <label class="filter-item__label">
+                                <input class="filter-item__checkbox" type="checkbox" data-filter="${filterType}" data-id="${appropBreed.id}">
+                                <span class="filter-item__label-name">${appropBreed.name}</span>
+                            </label>
+                        </li>
+                        `
+                    }
+                })
+
+                let filerLetterGroup = `<li class="filter-items">
+                    <span class="filter-letter">${letter}</span>
+                    <ul>
+                        ${filerItemsInGroup}
+                    </ul>
+                </li>`;
+
+                this.filterItemAllUl.insertAdjacentHTML('beforeEnd', filerLetterGroup);
+            });
+        // } else if (filterType === "sex") {
+        // Object.keys(this.catData[0]).includes(filterType) &&
+        } else if (typeof this.catData[0][filterType] === 'string') {
+            let filterItemsArr = [];
+            this.catData.forEach(cat => {
+                if(!filterItemsArr.includes(cat[filterType])) {
+                    filterItemsArr.push(cat[filterType]);
+                }
+            });
+            filterItemsArr.sort();
+
+            filterItemsArr.forEach(filterItem => {
+                let filterItems = `<li class="filter-item">
+                    <label class="filter-item__label">
+                        <input class="filter-item__checkbox" type="checkbox" data-filter="${filterType}" data-id="${filterItem}">
+                        <span class="filter-item__label-name">${filterItem}</span>
+                    </label>
+                </li>`;
+
+                this.filterItemAllUl.insertAdjacentHTML('beforeEnd', filterItems);
             })
-
-        }
-
-        openModalWindow(e) {
-
-        }
-
-        writeToCookies(e) {
-
+        } else {
+            console.log("filterType is not valid");
         }
     }
 
+    checkItems(e) {
+        //check-uncheck checkboxes (in consideration of "all" checkbox)
+        //to receive filter array (for one filter group)
+        
+        let filterItemAll = e.currentTarget.querySelector(".filter-item__checkbox[data-id='all']");
+        let filterItems = e.currentTarget.querySelectorAll(".filter-item__checkbox:not([data-id='all'])");
 
-
-
-    class Filter {
-        constructor(dbJson, cssSelector) {
-            this.dbJson = dbJson;
-            this.catData = this.dbJson.cats;
-            this.breedData = this.dbJson.breeds;
-            this.cssSelector = cssSelector;
-            this.filterItemAllUl = document.querySelector(this.cssSelector);
-            this.render();
-            // this.filterItemAllUl.addEventListener('change', this.checkItems);
-
-            this.filterItemAllUl.addEventListener('change', (e) => {
-                // this.checkItems(e)
-                var event = new CustomEvent("filter-check", {
-                    bubbles: true,
-                    detail: {
-                        // filter: e.target.dataset.filter, [e.target.dataset.id]: e.target.checked, 
-                        filterName: e.target.dataset.filter,
-                        filterValueArr: this.checkItems(e)
-                    }
-                });
-                this.filterItemAllUl.querySelector(".filter-item__checkbox").dispatchEvent(event)
-                    // .forEach(item => item.dispatchEvent(event));
-            });
-
-
-            // add an appropriate event listener
-
-            // create and dispatch the event
-        }
-
-        render() {
-            const filterType = this.cssSelector.replace(/.+--/,"");
-
-            // "breed" filter is unique - it contains groups.
-            // other filters (including "sex") may be created 
-            // in simpler way - w/o groups (see else if)
-            if (filterType === "breed") {
-                let breedFirstLetters = [];
-                let breedNames = [];
-                this.breedData.forEach(breed => {
-                    if (!breedFirstLetters.includes(breed.name[0])) {
-                        breedFirstLetters.push(breed.name[0])
-                    }
-                    breedNames.push(breed.name);
-                });
-                breedFirstLetters.sort();
-                breedNames.sort();
-
-                breedFirstLetters.forEach(letter => {
-                    let filerItemsInGroup = "";
-                    breedNames.forEach(breedName => {
-                        if (breedName[0] === letter) {
-                            let appropBreed = this.breedData.find(breed => breed.name === breedName);
-                            filerItemsInGroup += `<li class="filter-item">
-                                <label class="filter-item__label">
-                                    <input class="filter-item__checkbox" type="checkbox" data-filter="${filterType}" data-id="${appropBreed.id}">
-                                    <span class="filter-item__label-name">${appropBreed.name}</span>
-                                </label>
-                            </li>
-                            `
-                        }
-                    })
-
-                    let filerLetterGroup = `<li class="filter-items">
-                        <span class="filter-letter">${letter}</span>
-                        <ul>
-                            ${filerItemsInGroup}
-                        </ul>
-                    </li>`;
-
-                    this.filterItemAllUl.insertAdjacentHTML('beforeEnd', filerLetterGroup);
-                });
-            // } else if (filterType === "sex") {
-            // Object.keys(this.catData[0]).includes(filterType) &&
-            } else if (typeof this.catData[0][filterType] === 'string') {
-                let filterItemsArr = [];
-                this.catData.forEach(cat => {
-                    if(!filterItemsArr.includes(cat[filterType])) {
-                        filterItemsArr.push(cat[filterType]);
-                    }
-                });
-                filterItemsArr.sort();
-
-                filterItemsArr.forEach(filterItem => {
-                    let filterItems = `<li class="filter-item">
-                        <label class="filter-item__label">
-                            <input class="filter-item__checkbox" type="checkbox" data-filter="${filterType}" data-id="${filterItem}">
-                            <span class="filter-item__label-name">${filterItem}</span>
-                        </label>
-                    </li>`;
-
-                    this.filterItemAllUl.insertAdjacentHTML('beforeEnd', filterItems);
-                })
-            } else {
-                console.log("filterType is not valid");
-            }
-        }
-
-        checkItems(e) {
-            //check-uncheck checkboxes (in consideration of "all" checkbox)
-            //to receive filter array (for one filter group)
-            
-            let filterItemAll = e.currentTarget.querySelector(".filter-item__checkbox[data-id='all']");
-            let filterItems = e.currentTarget.querySelectorAll(".filter-item__checkbox:not([data-id='all'])");
-
-            let isSomeFilterSelected = false;
-            let isEveryFiltersSelected = null;
-            
-            filterItems.forEach(item => {
-                if (item.checked) {
-                    isSomeFilterSelected = true;
-                    if (isEveryFiltersSelected === null || isEveryFiltersSelected) {
-                        isEveryFiltersSelected = true;
-                    }
-                } else {
-                    isEveryFiltersSelected = false;
+        let isSomeFilterSelected = false;
+        let isEveryFiltersSelected = null;
+        
+        filterItems.forEach(item => {
+            if (item.checked) {
+                isSomeFilterSelected = true;
+                if (isEveryFiltersSelected === null || isEveryFiltersSelected) {
+                    isEveryFiltersSelected = true;
                 }
-            });
-
-            let filterValueArr = [];
-            // if (e.target !== filterItemAll) {
-            //     if (isEveryFiltersSelected) {
-            //         filterItemAll.checked = true;
-            //         res = ["all"];
-            //         filterItems.forEach(item => item.checked = false);
-            //     } else if (isSomeFilterSelected) {
-            //         filterItemAll.checked = false;
-            //         filterItems.forEach(item => {
-            //             if (item.checked) res.push(item.dataset.id)
-            //         })
-            //     } else {
-            //         filterItemAll.checked = true;
-            //         res = ["all"];
-            //     }
-            // } else if (e.target === filterItemAll) {
-            //     filterItemAll.checked = true;
-            //     res = ["all"];
-            //     filterItems.forEach(item => item.checked = false);
-            // }
-
-
-            
-            if (e.target !== filterItemAll && isSomeFilterSelected && !isEveryFiltersSelected) {
-                filterItemAll.checked = false;
-                filterItems.forEach(item => {
-                    if (item.checked) filterValueArr.push(item.dataset.id);
-                })
             } else {
-                filterItemAll.checked = true;
-                filterValueArr = ["all"];
-                filterItems.forEach(item => item.checked = false);
+                isEveryFiltersSelected = false;
             }
+        });
 
-            console.log(filterValueArr);
-            return filterValueArr;
+        let filterValueArr = [];
+        
+        if (e.target !== filterItemAll && isSomeFilterSelected && !isEveryFiltersSelected) {
+            filterItemAll.checked = false;
+            filterItems.forEach(item => {
+                if (item.checked) filterValueArr.push(item.dataset.id);
+            })
+        } else {
+            filterItemAll.checked = true;
+            filterValueArr = ["all"];
+            filterItems.forEach(item => item.checked = false);
         }
+
+        console.log(filterValueArr);
+        return filterValueArr;
     }
+}
 
     
     // let testFilter = new Filter(json, ".filter__group-list--large");
