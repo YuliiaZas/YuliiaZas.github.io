@@ -53,58 +53,23 @@ getData("json/bd.json").then(function(json) {
             this.renderCatalog();
         }
         
-        filterCatalog(filterData, filterGroup) {
-            // console.log(filterValue);
-            //to get filteredData from cloned catData
-            // function getFilteredData(data, filterData) {
-                // if (Array.isArray(filterData)) {
-                //     return filterData.forEach(filterItem => {
-                //         data.filter(item => {
-    
-                //         });
-                //     })
-                // } else {
-                //     let res = null;
-                //     for (let filterGroup of Object.values(filterData)) {
-                //         res = getFilteredData(filterGroup);
-                //     }
-                //     return res;
-                // }
-  
-                
-            // }
-            let data = JSON.parse(JSON.stringify(this.catData));
+        filterCatalog(filterValue) {
             (function getFilteredData(filterData, filterGroup, data) {
-                let res = null;
+                let resultData = null;
                 if (Array.isArray(filterData)) {
                     return data.filter(item => {
-                        if (filterData.includes("all")) {
-                            return item;
-                        } else {
-                            return filterData.includes(item[filterGroup]);
-                        }
+                        return (filterData.includes("all")) ? item : 
+                            filterData.includes(item[filterGroup]);
                     });
                 } else {
                     for (let filterGroup in filterData) {
-                        if (res === null) {
-                            res = data;
-                        }
-                        res = getFilteredData(filterData[filterGroup], filterGroup, res);
+                        if (resultData === null) { resultData = data; }
+                        resultData = getFilteredData(filterData[filterGroup], filterGroup, resultData);
                     }
-                    console.log(res);
-                    return res;
+                    console.log(resultData);
+                    return resultData;
                 }
-            }(filterData, filterGroup, data))
-
-            // let filteredData = JSON.parse(JSON.stringify(this.catData)).filter(item => {
-
-            // });
-            // let filteredData = getFilteredData(filterValue)
-            // let itemsArr = [];
-
-            // this.catData
-            // this.renderCatalog(itemsArr);
-            // return filteredData;
+            }(filterValue, null, JSON.parse(JSON.stringify(this.catData))));
         }
         
         // renderCatalog(filterCatalog(filterValue))
@@ -270,8 +235,8 @@ getData("json/bd.json").then(function(json) {
         filtersCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 filterValue[checkbox.dataset.filter] ?
-                filterValue[checkbox.dataset.filter].push(checkbox.dataset.id) :
-                filterValue[checkbox.dataset.filter] = [(checkbox.dataset.id)];
+                    filterValue[checkbox.dataset.filter].push(checkbox.dataset.id) :
+                    filterValue[checkbox.dataset.filter] = [(checkbox.dataset.id)];
             }
         });
         console.log(filterValue);
