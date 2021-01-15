@@ -1,26 +1,3 @@
-// $.ajaxSetup({
-//     async: false
-// });
-// receiveData = (json, dataName) => {
-//     let resData = null;
-//     $.getJSON(json, (data => {
-//         resData = data[dataName];
-//     }));
-//     return resData;
-// };
-// receiveIdArr = (inputData) => {
-//     let resArr = [];
-//     for (let item of inputData) {
-//         resArr.push(item.id);
-//     };
-//     return resArr;
-// };
-// let catData = receiveData("json/cat-data.json", "cats");
-// // let catIdArr = receiveIdArr(catData);
-// let breedData = receiveData("json/breed-data.json", "breeds");
-// let ownerData = receiveData("json/owner-data.json", "owners");
-
-
 const getData = async (url) => {
     const res = await fetch(url);
     if (!res.ok) {
@@ -33,29 +10,38 @@ const getData = async (url) => {
 }
 
 getData("json/bd.json").then(function(json) {
-    class Shop {
-        constructor(cssSelector) {
-            this.cssSelector = cssSelector;
-            this.createShop();
-        }
-        createShop() {
+    const cats = new Catalog(json, ".catalog__content");
+    const breedFilter = new Filter(json, ".filter__group-list--breed");
+    const sexFilter = new Filter(json, ".filter__group-list--sex");
 
-        }
+    const sortBox = document.querySelector("#sort");
+    let filterRes = {};
+
+    document.addEventListener("filter-check", function(e) { 
+        filterRes[e.detail.filterName] = e.detail.filterValueArr;
+        cats.filterCatalog(filterRes);
+        sortBox.value = "default";
+    });
+
+    sortBox.onchange = () => {
+        let sortType = sortBox.value;
+        cats.sortCatalog(sortType, filterRes);
     }
+})
 
-    class Catalog1 {
+    class Catalog {
         constructor(dbJson, cssSelector, filterData, sortType) {
             this.dbJson = dbJson;
             this.catData = this.dbJson.cats;
             this.breedData = this.dbJson.breeds;
             this.ownerData = this.dbJson.owners;
-            this.cssSelector = cssSelector;
-            this.renderCatalog();
+            this.catalogBox = document.querySelector(cssSelector);
+            this.renderCatalog(this.catData);
         }
         
         filterCatalog(filterValue) {
-            (function getFilteredData(filterData, filterGroup, data) {
-                let resultData = null;
+            let resultData = null;
+            let res = (function getFilteredData(filterData, filterGroup, data) {
                 if (Array.isArray(filterData)) {
                     return data.filter(item => {
                         return (filterData.includes("all")) ? item : 
@@ -70,29 +56,85 @@ getData("json/bd.json").then(function(json) {
                     return resultData;
                 }
             }(filterValue, null, JSON.parse(JSON.stringify(this.catData))));
+            this.renderCatalog(resultData);
+            return res;
         }
-        
-        // renderCatalog(filterCatalog(filterValue))
-        // renderCatalog(sortCatalog(sortType, filterCatalog(filterValue)))
 
-        sortCatalog(sortType, filteredData) {
-            // console.log(sortType);
-            //to get sortedData from filteredData (from cloned catData)
-            let sortedData = [];
-            //to get itemsArr
-            // let itemsArr = [];
-            // this.renderCatalog(itemsArr);
-            return sortedData;
+
+        sortCatalog(sortValue, filterValue) {
+            let filteredData = Object.keys(filterValue).length  === 0 ? JSON.parse(JSON.stringify(this.catData)) : this.filterCatalog(filterValue);
+
+            let arr = sortValue.match(/\w+/gi);
+            let sortType = arr[0];
+            let sortDirection = arr[arr.length - 1];
+
+            if (sortType === "default") {
+                filteredData = JSON.parse(JSON.stringify(this.catData));
+            } else {
+                if (sortType === "age") {
+                    filteredData.forEach(item => {
+                        item.ageYear = (/мес/i).test(item.age) ? parseInt(item.age) / 12 : parseInt(item.age);
+                    });
+                    sortType = "ageYear";
+                }
+                if (sortDirection === "ascend"){
+                    filteredData.sort((a, b) => {
+                        return parseInt(a[sortType])  > parseInt(b[sortType]) ? 1 : -1;
+                    });
+                } else if (sortDirection === "descend") {
+                    filteredData.sort((b, a) => {
+                        return parseInt(a[sortType]) > parseInt(b[sortType]) ? 1 : -1;
+                    });
+                }
+            }
+            this.renderCatalog(filteredData);
         }
 
         renderCatalog(data) {
-            // itemsArr.forEach(() => {
+            if (this.catalogBox.querySelectorAll(".goods")) {
+                this.catalogBox.querySelectorAll(".goods").forEach(item => item.remove())
+            };
 
-            // });
-            console.log(this.dbJson);
-            console.log(this.catData);
-            console.log(this.breedData);
-            console.log(this.ownerData);
+            data.forEach(cat => {
+                let catBreed = this.breedData.find(item => item.id === cat.breed);
+                let catOwner = this.ownerData.find(item => item.id === cat.owner);
+                let catOwnerHtml = `<a class="goods__picture-owner" href="${catOwner["unsplash-link"]}" target="_blank">by ${catOwner.name}</a>`;
+                
+                let catPhotosSmallArr = cat.photo.large;
+                let catImgAlt = `${cat.sex} ${cat.name}, ${cat.age}, ${cat.color}`;
+                let catImgsHtml = `<img class="goods__picture-img" src="${catPhotosSmallArr[0]}" alt="${catImgAlt}">`;
+                if (catPhotosSmallArr.length > 1) {
+                    catImgsHtml += `
+                    <img class="goods__picture-img" src="${catPhotosSmallArr[1]}" alt="${catImgAlt}">`;
+                }
+
+                let catArticleHtml = `<article class="goods">
+                    <div class="goods__id">${cat.id}</div>
+                    <div class="goods__picture-wrapper">
+                        ${catImgsHtml}
+                        ${catOwnerHtml}
+                    </div>
+                    <div class="goods__description">
+                        <div class="goods__name">${cat.name}</div>
+                        <div class="goods__breed">${catBreed.name}</div>
+                        <div class="goods__character">
+                            <span class="goods__sex">${cat.sex},</span>
+                            <span class="goods__age">${cat.age}</span>
+                        </div>  
+                    </div>
+                    <hr>
+                    <div class="goods__footer">
+                        <div class="goods__prices">
+                            <!--div class="goods__old-price"></div-->
+                            <div class="goods__price">${cat.price} грн.</div>
+                        </div>
+                        <button class="button button--goods" type="button">В корзину</button>
+                    </div>
+                </article>`;
+
+                this.catalogBox.insertAdjacentHTML('beforeEnd', catArticleHtml)                                                    
+            })
+
         }
 
         openModalWindow(e) {
@@ -104,7 +146,8 @@ getData("json/bd.json").then(function(json) {
         }
     }
 
-    
+
+
 
     class Filter {
         constructor(dbJson, cssSelector) {
@@ -112,9 +155,28 @@ getData("json/bd.json").then(function(json) {
             this.catData = this.dbJson.cats;
             this.breedData = this.dbJson.breeds;
             this.cssSelector = cssSelector;
-            this.filterItemAllLi = document.querySelector(this.cssSelector);
+            this.filterItemAllUl = document.querySelector(this.cssSelector);
             this.render();
-            this.filterItemAllLi.addEventListener('change', this.checkItems);
+            // this.filterItemAllUl.addEventListener('change', this.checkItems);
+
+            this.filterItemAllUl.addEventListener('change', (e) => {
+                // this.checkItems(e)
+                var event = new CustomEvent("filter-check", {
+                    bubbles: true,
+                    detail: {
+                        // filter: e.target.dataset.filter, [e.target.dataset.id]: e.target.checked, 
+                        filterName: e.target.dataset.filter,
+                        filterValueArr: this.checkItems(e)
+                    }
+                });
+                this.filterItemAllUl.querySelector(".filter-item__checkbox").dispatchEvent(event)
+                    // .forEach(item => item.dispatchEvent(event));
+            });
+
+
+            // add an appropriate event listener
+
+            // create and dispatch the event
         }
 
         render() {
@@ -157,7 +219,7 @@ getData("json/bd.json").then(function(json) {
                         </ul>
                     </li>`;
 
-                    this.filterItemAllLi.insertAdjacentHTML('beforeEnd', filerLetterGroup);
+                    this.filterItemAllUl.insertAdjacentHTML('beforeEnd', filerLetterGroup);
                 });
             // } else if (filterType === "sex") {
             // Object.keys(this.catData[0]).includes(filterType) &&
@@ -178,7 +240,7 @@ getData("json/bd.json").then(function(json) {
                         </label>
                     </li>`;
 
-                    this.filterItemAllLi.insertAdjacentHTML('beforeEnd', filterItems);
+                    this.filterItemAllUl.insertAdjacentHTML('beforeEnd', filterItems);
                 })
             } else {
                 console.log("filterType is not valid");
@@ -206,62 +268,83 @@ getData("json/bd.json").then(function(json) {
                 }
             });
 
-            if (e.target !== filterItemAll) {
-                if (isEveryFiltersSelected) {
-                    filterItemAll.checked = true;
-                    filterItems.forEach(item => item.checked = false);
-                } else if (isSomeFilterSelected) {
-                    filterItemAll.checked = false;
-                } else {
-                    filterItemAll.checked = true;
-                }
-            } else if (e.target === filterItemAll) {
+            let filterValueArr = [];
+            // if (e.target !== filterItemAll) {
+            //     if (isEveryFiltersSelected) {
+            //         filterItemAll.checked = true;
+            //         res = ["all"];
+            //         filterItems.forEach(item => item.checked = false);
+            //     } else if (isSomeFilterSelected) {
+            //         filterItemAll.checked = false;
+            //         filterItems.forEach(item => {
+            //             if (item.checked) res.push(item.dataset.id)
+            //         })
+            //     } else {
+            //         filterItemAll.checked = true;
+            //         res = ["all"];
+            //     }
+            // } else if (e.target === filterItemAll) {
+            //     filterItemAll.checked = true;
+            //     res = ["all"];
+            //     filterItems.forEach(item => item.checked = false);
+            // }
+
+
+            
+            if (e.target !== filterItemAll && isSomeFilterSelected && !isEveryFiltersSelected) {
+                filterItemAll.checked = false;
+                filterItems.forEach(item => {
+                    if (item.checked) filterValueArr.push(item.dataset.id);
+                })
+            } else {
                 filterItemAll.checked = true;
+                filterValueArr = ["all"];
                 filterItems.forEach(item => item.checked = false);
             }
+
+            console.log(filterValueArr);
+            return filterValueArr;
         }
     }
 
-    const cats = new Catalog1(json, ".catalog");
-    const breedFilter = new Filter(json, ".filter__group-list--breed");
-    const sexFilter = new Filter(json, ".filter__group-list--sex");
+    
     // let testFilter = new Filter(json, ".filter__group-list--large");
 
-    const filtersBox = document.querySelector(".filter");
-    // let filterValue = {};
-    function getFilterValue() {
-        let filterValue = {};
-        let filtersCheckboxes = filtersBox.querySelectorAll(".filter-item__checkbox");
-        filtersCheckboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                filterValue[checkbox.dataset.filter] ?
-                    filterValue[checkbox.dataset.filter].push(checkbox.dataset.id) :
-                    filterValue[checkbox.dataset.filter] = [(checkbox.dataset.id)];
-            }
-        });
-        console.log(filterValue);
-        return filterValue;
-    }
-    filtersBox.onchange = (e) => {
-        cats.filterCatalog(getFilterValue());
-        // cats.renderCatalog(cats.filterCatalog(getFilterValue()));
-    };
+    // const filtersBox = document.querySelector(".filter");
+    // // let filterValue = {};
+    // function getFilterValue() {
+    //     let filterValue = {};
+    //     let filtersCheckboxes = filtersBox.querySelectorAll(".filter-item__checkbox");
+    //     filtersCheckboxes.forEach(checkbox => {
+    //         if (checkbox.checked) {
+    //             filterValue[checkbox.dataset.filter] ?
+    //                 filterValue[checkbox.dataset.filter].push(checkbox.dataset.id) :
+    //                 filterValue[checkbox.dataset.filter] = [(checkbox.dataset.id)];
+    //         }
+    //     });
+    //     console.log(filterValue);
+    //     return filterValue;
+    // }
+    // filtersBox.onchange = (e) => {
+    //     cats.filterCatalog(getFilterValue());
+    //     // cats.renderCatalog(cats.filterCatalog(getFilterValue()));
+    // };
     
 
-    const sortBox = document.querySelector("#sort");
-    sortBox.onchange = () => {
-        let sortType = sortBox.value;
-        // getFilterValue();
-        // cats.sortCatalog(sortType, cats.filterCatalog(getFilterValue()));
-        cats.renderCatalog(cats.sortCatalog(sortType, cats.filterCatalog(getFilterValue())));
-        console.log(sortBox.value);
-    }
+    // const sortBox = document.querySelector("#sort");
+    // sortBox.onchange = () => {
+    //     let sortType = sortBox.value;
+    //     // getFilterValue();
+    //     // cats.sortCatalog(sortType, cats.filterCatalog(getFilterValue()));
+    //     cats.renderCatalog(cats.sortCatalog(sortType, cats.filterCatalog(getFilterValue())));
+    //     console.log(sortBox.value);
+    // }
     // onchange:
     // cats.sortCatalog(sortType);
 
     // btn onclick
 
-})
+
 // getData("json/bd.json").then((data) => {
 //     console.log(data);
 // })
@@ -280,79 +363,79 @@ getData("json/bd.json").then(function(json) {
 //         this.createEvents();
 //     }
 
-//     renderCatalog () {
-//         console.log(this.catIdArr);
-//         this.catalogBlock.find(".goods").remove(); //clear catalog before filter result rendering 
-//         $.each(this.catIdArr, i => {
-//             console.log("======")
-//             this.addCatInfo(this.catIdArr[i])
-//         });
-//     }
+    // renderCatalog () {
+    //     console.log(this.catIdArr);
+    //     this.catalogBlock.find(".goods").remove(); //clear catalog before filter result rendering 
+    //     $.each(this.catIdArr, i => {
+    //         console.log("======")
+    //         this.addCatInfo(this.catIdArr[i])
+    //     });
+    // }
 
-//     addCatInfo(id) {
-//         let cat = null;
-//         $.each(this.catData, (i, item) => {
-//             if (item.id === id) {
-//                 cat = this.catData[i];
-//             }
-//         });
-//         let catBreedName = null;
-//         $.each(this.breedData, (i, item) => {
-//             if (item.id === cat.breed) {
-//                 catBreedName = this.breedData[i].name;
-//             }
-//         });
-//         let catOwner = null;
-//         $.each(this.ownerData, (i,item) => {
-//             if (item.id === cat.owner) {
-//                 catOwner = this.ownerData[i];
-//             }
-//         });
-//         let catOwnerHtml = `<a class="goods__picture-owner" href="${catOwner["unsplash-link"]}" target="_blank">by ${catOwner.name}</a>`;
+    // addCatInfo(id) {
+    //     let cat = null;
+    //     $.each(this.catData, (i, item) => {
+    //         if (item.id === id) {
+    //             cat = this.catData[i];
+    //         }
+    //     });
+    //     let catBreedName = null;
+    //     $.each(this.breedData, (i, item) => {
+    //         if (item.id === cat.breed) {
+    //             catBreedName = this.breedData[i].name;
+    //         }
+    //     });
+    //     let catOwner = null;
+    //     $.each(this.ownerData, (i,item) => {
+    //         if (item.id === cat.owner) {
+    //             catOwner = this.ownerData[i];
+    //         }
+    //     });
+    //     let catOwnerHtml = `<a class="goods__picture-owner" href="${catOwner["unsplash-link"]}" target="_blank">by ${catOwner.name}</a>`;
 
-//         let catPhotosSmallArr = [];
-//         // $.each(cat.photo, (i,group) => { //use this when imgs will be added
-//         //     if ("small" in group) {
-//         //         catPhotosSmallArr = group.small;
-//         //     }
-//         // });
-//         $.each(cat.photo, (i,group) => {
-//             if ("large" in group) {
-//                 catPhotosSmallArr = group.large;
-//             }
-//         });
-//         let catImgAlt = `${cat.sex} ${cat.name}, ${cat.age}, ${cat.color}`;
-//         let catImgsHtml = `<img class="goods__picture-img" src="${catPhotosSmallArr[0]}" alt="${catImgAlt}">`;
-//         if (catPhotosSmallArr.length > 1) {
-//             catImgsHtml += `
-//             <img class="goods__picture-img" src="${catPhotosSmallArr[1]}" alt="${catImgAlt}">`;
-//         }
+    //     let catPhotosSmallArr = [];
+    //     // $.each(cat.photo, (i,group) => { //use this when imgs will be added
+    //     //     if ("small" in group) {
+    //     //         catPhotosSmallArr = group.small;
+    //     //     }
+    //     // });
+    //     $.each(cat.photo, (i,group) => {
+    //         if ("large" in group) {
+    //             catPhotosSmallArr = group.large;
+    //         }
+    //     });
+    //     let catImgAlt = `${cat.sex} ${cat.name}, ${cat.age}, ${cat.color}`;
+    //     let catImgsHtml = `<img class="goods__picture-img" src="${catPhotosSmallArr[0]}" alt="${catImgAlt}">`;
+    //     if (catPhotosSmallArr.length > 1) {
+    //         catImgsHtml += `
+    //         <img class="goods__picture-img" src="${catPhotosSmallArr[1]}" alt="${catImgAlt}">`;
+    //     }
 
-//         let currentCat = `<article class="goods">
-//             <div class="goods__id">${cat.id}</div>
-//             <div class="goods__picture-wrapper">
-//                 ${catImgsHtml}
-//                 ${catOwnerHtml}
-//             </div>
-//             <div class="goods__description">
-//                 <div class="goods__name">${cat.name}</div>
-//                 <div class="goods__breed">${catBreedName}</div>
-//                 <div class="goods__character">
-//                     <span class="goods__sex">${cat.sex},</span>
-//                     <span class="goods__age">${cat.age}</span>
-//                 </div>  
-//             </div>
-//             <hr>
-//             <div class="goods__footer">
-//                 <div class="goods__prices">
-//                     <!--div class="goods__old-price"></div-->
-//                     <div class="goods__price">${cat.price} грн.</div>
-//                 </div>
-//                 <button class="button button--goods" type="button">В корзину</button>
-//             </div>
-//         </article>`;
-//         $(currentCat).appendTo(this.catalogBlock);
-//     }
+    //     let currentCat = `<article class="goods">
+    //         <div class="goods__id">${cat.id}</div>
+    //         <div class="goods__picture-wrapper">
+    //             ${catImgsHtml}
+    //             ${catOwnerHtml}
+    //         </div>
+    //         <div class="goods__description">
+    //             <div class="goods__name">${cat.name}</div>
+    //             <div class="goods__breed">${catBreedName}</div>
+    //             <div class="goods__character">
+    //                 <span class="goods__sex">${cat.sex},</span>
+    //                 <span class="goods__age">${cat.age}</span>
+    //             </div>  
+    //         </div>
+    //         <hr>
+    //         <div class="goods__footer">
+    //             <div class="goods__prices">
+    //                 <!--div class="goods__old-price"></div-->
+    //                 <div class="goods__price">${cat.price} грн.</div>
+    //             </div>
+    //             <button class="button button--goods" type="button">В корзину</button>
+    //         </div>
+    //     </article>`;
+    //     $(currentCat).appendTo(this.catalogBlock);
+    // }
 
 //     writeToLacalStorage() {
 //         let goodsItems = this.catalogBlock.find(".goods");
