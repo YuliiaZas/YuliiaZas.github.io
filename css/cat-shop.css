@@ -89,7 +89,10 @@ ul, li {
 .goods__picture-wrapper:hover .goods__picture-img:not(:nth-child(2)) {
     display: none;
 }
-
+.purchase {
+    display: flex;
+    justify-content: space-between;
+}
 /* .aside-part__filter {
     padding: 10px;
 } */

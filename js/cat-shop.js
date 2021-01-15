@@ -124,12 +124,12 @@ class Catalog {
                     </div>  
                 </div>
                 <hr>
-                <div class="goods__footer">
-                    <div class="goods__prices">
-                        <!--div class="goods__old-price"></div-->
-                        <div class="goods__price">${cat.price} грн.</div>
+                <div class="purchase">
+                    <div class="purchase__prices">
+                        <!--div class="purchase__old-price"></div-->
+                        <div class="purchase__new-price">${cat.price} грн.</div>
                     </div>
-                    <button class="button button--goods" type="button">В корзину</button>
+                    <button class="button purchase__button--goods" type="button">В корзину</button>
                 </div>
             </article>`;
 
