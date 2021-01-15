@@ -96,6 +96,23 @@ ul, li {
 /* .aside-part__filter {
     padding: 10px;
 } */
+.filter__group {
+    border: 0.1px solid;
+    padding: 10px;
+    padding-left: 35px;
+    text-indent: -25px;
+}
+.filter__group-name {
+    font-size: 1.15em;
+}
+.filter__group-list {
+    margin-top: 5px;
+}
+.filter-letter {
+    color: #666;
+}
+
+
 .aside-part__letter {
     background-color: #faf0e7;
     font-weight: bold;
