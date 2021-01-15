@@ -1,9 +1,31 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
-}
+} */
 
-.catalog {
+/* .shop {
+    display: flex;
+    flex-direction: row;
+}
+.aside {
+    width: 250px;
+} */
+ul, li {
+    list-style-type:none;
+    padding-left: 0;
+    /* margin: 0; */
+}
+.hidden {
+    display: none;
+}
+.header {
+    height: 50px;
+}
+.shop {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+.catalog__content {
     max-width: 930px;
     margin: 20px auto;
     /* width: 100vw; */
@@ -16,25 +38,25 @@
     grid-auto-rows: calc(300px + 100px);
     gap: 15px;
 }
-.picture {
+.goods__picture-wrapper {
     position: relative;
     height: 300px;
 }
 
 @media (max-width: 930px) {
-    .catalog {
+    .catalog__content {
         grid-template-columns: repeat(3, 33vw);
         grid-auto-rows: minmax(auto, calc(33vw + 100px));
         gap: 0.5vw;
     }
-    .picture {
+    .goods__picture-wrapper {
         height: 33vw;
     }
 }
 .goods__id {
     display: none;
 }
-.picture__owner {
+.goods__picture-owner {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -46,25 +68,25 @@
     font-size: 12px;
 }
 
-.picture__img {
+.goods__picture-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
 }
 
-/* <div class="picture">
-    <img class="picture__img" src="...">
-    <img class="picture__img" src="...">
+/* <div class="goods__picture-wrapper">
+    <img class="goods__picture-img" src="...">
+    <img class="goods__picture-img" src="...">
 </div> */
 
-.picture__img:not(:first-child) {
+.goods__picture-img:not(:first-child) {
     display: none;
 }
-.picture:hover .picture__img:nth-child(2) {
+.goods__picture-wrapper:hover .goods__picture-img:nth-child(2) {
     display: initial;
 }
-.picture:hover .picture__img:not(:nth-child(2)) {
+.goods__picture-wrapper:hover .goods__picture-img:not(:nth-child(2)) {
     display: none;
 }
 
