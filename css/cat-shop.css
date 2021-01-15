@@ -97,10 +97,11 @@ ul, li {
     padding: 10px;
 } */
 .filter__group {
-    border: 0.1px solid;
+    border: 0.1px solid #666;
     padding: 10px;
     padding-left: 35px;
     text-indent: -25px;
+    margin-bottom: 2px;
 }
 .filter__group-name {
     font-size: 1.15em;
