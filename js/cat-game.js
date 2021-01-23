@@ -33,7 +33,9 @@ class Game {
         this.score = this.game.find(".score__value");
         this.resultBox = this.game.children(".game__finish");
         this.result = this.resultBox.children(".game__result");
-        this.btn = this.resultBox.children(".game__close-btn");
+        this.btn = this.resultBox.children(".game__ok-btn");
+
+        console.log(this.btn)
 
         this.lastSpeech = null;
         this.prevCat = null;
@@ -47,6 +49,7 @@ class Game {
     }
 
     startGameScreen () {
+        console.log(this.resultBox);
         this.lastSpeech = null;
         this.prevCat = null;
         this.sameCatTimes = 1;
@@ -68,6 +71,8 @@ class Game {
             setTimeout(() => this.playRound(), TIME_BETWEEN_ROUNDS);
         } else  {
             this.resultBox.removeClass("display-none");
+            // console.log("window.history");
+            // console.log(window.history);
             if (this.scoreValue <= LOSS) {
                 this.result.html(MESSAGES.result.loss);
             } else if (this.scoreValue >= WIN) {
@@ -130,14 +135,23 @@ class Game {
     }
     
     moveBall (e) {
-        let xMax = this.game[0].getBoundingClientRect().width - this.ball[0].getBoundingClientRect().width;
-        let yMax = this.game[0].getBoundingClientRect().height - this.ball[0].getBoundingClientRect().height;
-        let xRandom = Math.round(xMax * Math.random());
-        let yRandom = Math.round(yMax * Math.random());
+        let gameYTop = this.game[0].getBoundingClientRect().top;
+        let gameXLeft = this.game[0].getBoundingClientRect().left;
         
+        let gameHeight = this.game[0].getBoundingClientRect().height;
+        let gameWidth = this.game[0].getBoundingClientRect().width;
+        
+        let ballDiam = this.ball[0].getBoundingClientRect().width;
+
+        let xRandom = Math.round((gameWidth - ballDiam) * Math.random());
+        let yRandom = Math.round((gameHeight - ballDiam) * Math.random());
+                
         if (e) {
-            this.ball.css({"--xEnd":`calc(${e.clientX}px - 10vmin)`,
-                            "--yEnd":`calc(${e.clientY}px - 5vmin)`});
+            let clickY = e.clientY - gameYTop;
+            let clickX = e.clientX - gameXLeft;
+            this.ball.css({"--xEnd":`${clickX - ballDiam / 2}px`,
+                            "--yEnd":`${clickY - ballDiam / 2}px`});
+
             this.ballPosition = $(e.target);
         } else {
             this.ball.css({"--xEnd":`${xRandom}px`,

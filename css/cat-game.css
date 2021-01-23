@@ -1,14 +1,79 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    min-width: 500px;
+    /* padding: 0; */
+}
+.header__links {
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 50px;
+    /* background-color: black; */
+    /* background-color:  #0E3E4D; */
+    background-color:  #1f4f59;
+
+}
+.header__link {
+    text-decoration: none;
+    font-size: 1.2em;
+    /* color: #f5deb3;
+    color: #F5D3C8; */
+    color: #fff;
+    padding: 2px 5px;
+    border-bottom: 2px solid transparent;
+}
+.header__link:hover {
+    /* text-decoration: underline; */
+    border-bottom: 2px solid;
+}
+
+
+.header__bg {
+    margin-top: 50px;
+    background-image: url(../img/header_bg-1.jpg);
+    background-position: 50% 35%;
+    background-size: cover;
+    height: 350px;
+}
+.footer__bg {
+    background-image: url(../img/footer_bg-2.jpg);
+    background-position: 100% 92%;
+    background-size: cover;
+    height: 100px;
+}
+.game-section {
+    min-width: 500px;
+    margin: 50px 0;
+}
+
 .game {
     position: relative;
     margin: 0 auto;
-    height: 51.5vw;
-    width: 90vw;
+    /* height: 51.5vw;
+    width: 90vw; */
+    height: 45.8vw;
+    width: 80vw;
+    max-width: 1050px;
+    max-height: 600px;
+    min-width: 500px;
+    min-height: 300px;
+
     background: url(../img/game/carpet.png) center /contain no-repeat border-box;
 }
 @media (min-aspect-ratio: 8/5) and (max-height: 500px) {
     .game {
-        height: 95vh;
-        width: 166vh;
+        /* height: 95vh;
+        width: 166vh; */
+        height: 80vh;
+        width: 140vh;
     }
 }
 
@@ -83,11 +148,13 @@
 
 .game__speech-box,
 .game__score,
-.game__finish,
-.game__close-btn  {
+.game__finish {
+/* .game__ok-btn { */
     position: absolute;
     border-radius: 10px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    /* border: 2px solid #0E3E4D; */
+    border: 2px solid #1f4f59;
     background: linear-gradient(#fff, rgba(255, 255, 255, 0.5));
     padding: 5px;
 }
@@ -121,8 +188,12 @@
     top: calc(-5vmin - 4px);
     right: calc(10% - 2px);
     border-top: calc(2.5vmin + 2px) solid transparent;
-	border-right: calc(1.5vmin + 2px) solid black;
-	border-bottom: calc(2.5vmin + 2px) solid black;
+    /* border-right: calc(1.5vmin + 2px) solid black; */
+    /* border-right: calc(1.5vmin + 2px) solid #0E3E4D; */
+    border-right: calc(1.5vmin + 2px) solid #1f4f59;
+	/* border-bottom: calc(2.5vmin + 2px) solid black; */
+    /* border-bottom: calc(2.5vmin + 2px) solid #0E3E4D; */
+    border-bottom: calc(2.5vmin + 2px) solid #1f4f59;
 	border-left: calc(1.5vmin + 2px) solid transparent;
 }
 .game__speech-box::after {
@@ -137,7 +208,9 @@
     top: calc(-3vmin - 4px);
     left: calc(55% - 2px);
     border-top: calc(1.5vmin + 2px) solid transparent;
-	border-bottom: calc(1.5vmin + 2px) solid black;
+    /* border-bottom: calc(1.5vmin + 2px) solid black; */
+    /* border-bottom: calc(1.5vmin + 2px) solid #0E3E4D; */
+    border-bottom: calc(1.5vmin + 2px) solid #1f4f59;
 }
 .game__speech-box--2::after {
     top: calc(-3vmin + 1px);
@@ -170,17 +243,36 @@
     height: 70%;
     font-size: 1.8rem;
 }
-.game__close-btn {
-    position: static;
+/* .game__ok-btn:hover {
+    background:linear-gradient(to bottom, #f6f6f6 25%, #bab1ba 100%);
+} */
+
+.button {
+    border-radius: 10px;
+    /* border: 2px solid black; */
+    /* border: 2px solid#0E3E4D; */
+    border: 2px solid#1f4f59;
+    background-color: #fff;
+    padding: 5px;
     cursor: pointer;
+}
+.button:hover {
+    /* background:linear-gradient(to bottom, #f6f6f6 25%, #bab1ba 100%); */
+    background: linear-gradient(to bottom, #f6f6f6 15%, #bab1ba , #f6f6f6 95%);
+}
+
+.game__ok-btn {
+    /* position: static; */
     padding: 1.5vmin;
 }
-.game__close-btn:hover {
-    background:linear-gradient(to bottom, #f6f6f6 25%, #bab1ba 100%);
-}
+
+
 
 
 
 .display-none {
     display: none;
+}
+.hidden {
+    visibility: hidden;
 }
