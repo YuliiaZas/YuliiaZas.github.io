@@ -152,7 +152,7 @@ class Catalog {
         if (this.catalogBox.querySelectorAll(".goods")) {
             this.catalogBox.querySelectorAll(".goods").forEach(item => item.remove());
         };
-        let cart = JSON.parse(localStorage.getItem("cart"));
+        let cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
 
         data.forEach(cat => {
             let catBreed = this.breedData.find(item => item.id === cat.breed);
